@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :recipes do
     resources :favourites, only: [:create]
-    resources :reviews
+    resources :reviews, only: [ :new, :create ]
   end
 
   resources :community do
