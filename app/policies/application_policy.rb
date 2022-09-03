@@ -11,6 +11,9 @@ class ApplicationPolicy
   def index?
     false
   end
+  def myrecipes?
+    false
+  end
 
   def show?
     false
