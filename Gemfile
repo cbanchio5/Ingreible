@@ -10,6 +10,12 @@ gem 'pundit'
 # Gemfile
 gem 'devise'
 
+
+
+#Cloudinary gem
+
+gem 'cloudinary', '~> 1.16.0'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
