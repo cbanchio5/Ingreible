@@ -1,0 +1,11 @@
+<h1>these are my recipes</h1>
+
+<% @recipes.each do |recipe|  %>
+<p>The user ID is <%= recipe.user_id  %></p>
+<p>The name is <%= recipe.name  %></p>
+<p>The ingredients are <%= recipe.ingredients  %></p>
+<p>The difficulty is <%= recipe.difficulty  %></p>
+<p>The time is <%= recipe.time  %></p>
+<p>The serves are <%= recipe.serves  %></p>
+<p>The steps are <%= recipe.steps  %></p>
+<% end %>

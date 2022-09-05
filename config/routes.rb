@@ -8,8 +8,11 @@ Rails.application.routes.draw do
   resources :favourites, only: [:index, :show, :destroy]
 
   resources :recipes do
+    collection do
+      get :myrecipes
+    end
     resources :favourites, only: [:create]
-    resources :reviews
+    resources :reviews, only: [ :new, :create ]
   end
 
   resources :community do
