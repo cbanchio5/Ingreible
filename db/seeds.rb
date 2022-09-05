@@ -45,5 +45,8 @@ recipes.each do |recipe|
   new_recipe.save!
   count += 1
   puts count
+end
 
+communities.each do |community|
+  Com
 end
