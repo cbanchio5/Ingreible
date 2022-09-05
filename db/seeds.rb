@@ -8,8 +8,11 @@
 require "json"
 require "open-uri"
 require "nokogiri"
+require 'faker'
 
 Recipe.delete_all
+User.delete_all
+Community.delete_all
 User.delete_all
 
 filepath = 'db/recipes.json'
@@ -45,5 +48,21 @@ recipes.each do |recipe|
   new_recipe.save!
   count += 1
   puts count
+end
 
+filepath_communities = 'db/communities.json'
+
+serialized_data_community = File.read(filepath_communities)
+
+communities = JSON.parse(serialized_data_community)
+
+communities.each do |community|
+  new_community = Community.new(name: community["name"], description: community["description"])
+  new_community.save!
+end
+
+10.times do
+ user = User.new(fullname: Faker::Name.name, password: "test1234")
+ user.email = "#{user.fullname.split(' ').join('')}@test.com"
+ user.save!
 end
