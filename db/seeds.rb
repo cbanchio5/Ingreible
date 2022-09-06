@@ -25,7 +25,7 @@ count = 0
 user1 = User.new(fullname: "Admin", email: "admin@ingredible.me", admin:  true, password: "test1234")
 user1.save!
 
-recipes.each do |recipe|
+recipes.slice!(0, 30).each do |recipe|
   new_recipe = Recipe.new(name: recipe["Name"],
     ingredients: recipe["Ingredients"].join(", "),
     difficulty: ['easy', 'medium', 'hard'].sample,
@@ -42,6 +42,12 @@ recipes.each do |recipe|
     element.text.strip
     file = URI.open(element.attribute("src").value)
     new_recipe.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  end
+  html_doc.search('span').each do |element|
+    if element.text === "Cook:"
+      new_recipe.time = element.next_element.text
+    end
+
   end
 
 
