@@ -2,5 +2,5 @@
 <% @recipes.each do |recipe|%>
   <li><%= recipe.name%></li>
   <%= cl_image_tag recipe.photo.key, height: 300, width: 400, crop: :fill %>
-
+  <%= link_to 'See details',  recipe, class:"btn-primary" %>
   <%end%>

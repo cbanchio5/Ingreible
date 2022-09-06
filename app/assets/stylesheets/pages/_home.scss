@@ -1,1 +1,43 @@
 // Specific CSS for your home-page
+.h--tittle{
+  font-family: 'Righteous', cursive;
+  font-size:2rem;
+}
+
+.section--1{
+
+  background-color: #F9F9C5;
+  display:flex;
+
+}
+
+.square--1{
+
+  width: 700px;
+  height: 700px;
+  background-color: #DAE2B6;
+
+}
+
+.square--2{
+
+  width: 700px;
+  height: 700px;
+  background-color: #90B77D
+
+}
+
+.rotated {
+  transform: translate(600px) rotate(75deg);
+}
+
+.moved {
+  transform: translate(-400px) rotate(35deg);
+}
+
+.section--2{
+
+  background-color: #F7EDDB;
+  display:flex;
+
+}

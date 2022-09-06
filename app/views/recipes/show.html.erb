@@ -1,0 +1,35 @@
+<div class="container">
+
+<h1>The recipe is</h1>
+
+<h2 class="featurette-heading">Title: <%= @recipe.name %></h2>
+<div class="container">
+<p class="lead">Recipe Name: <%= @recipe.name %></p>
+  <p class="lead">recipe ID: <%= @recipe.id %></p>
+    <p class="lead">ingredients: <%= @recipe.ingredients %></p>
+    <p class="lead">Difficulty: <%= @recipe.difficulty %></p>
+    <p class="lead">timer: <%= @recipe.time %></p>
+</div>
+<div class="container-fluid">
+  <div class="jumbotron">
+      <div class="row ">
+
+
+ <div class="col-sm-12 col-md-12 col-lg-12">
+            <%= cl_image_tag @recipe.photo.key,   crop: :fill, class: "" %>
+          </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="container">
+      <%= link_to 'Delete this recipe', @recipe, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-lg btn-danger" %>
+
+</div>
+<br>
+
+
+</div>
