@@ -1,0 +1,6 @@
+<h1>Recipes</h1>
+<% @recipes.each do |recipe|%>
+  <li><%= recipe.name%></li>
+  <%= cl_image_tag recipe.photo.key, height: 300, width: 400, crop: :fill %>
+
+  <%end%>

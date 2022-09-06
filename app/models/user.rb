@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :memberships
   has_many :communities, through: :memberships
   has_many :favourites
+  has_one_attached :photo
 end

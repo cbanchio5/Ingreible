@@ -10,6 +10,13 @@ gem 'pundit'
 # Gemfile
 gem 'devise'
 
+# Faker
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+#Cloudinary gem
+
+gem 'cloudinary', '~> 1.16.0'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server

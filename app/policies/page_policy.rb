@@ -4,5 +4,6 @@ class PagePolicy < ApplicationPolicy
     # def resolve
     #   scope.all
     # end
+
   end
 end
