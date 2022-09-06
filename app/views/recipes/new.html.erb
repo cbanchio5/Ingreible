@@ -1,0 +1,24 @@
+<div class="container">
+
+<%= simple_form_for(@recipe) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :ingredients %>
+    <%= f.input :difficulty %>
+    <%= f.input :time %>
+    <%= f.input :steps %>
+    <%= f.input :serves %>
+    <%= f.input :category %>
+    <%= f.input :photo, as: :file, input_html: { multiple: false } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-sm btn-outline-secondary" %>
+  </div>
+<% end %>
+
+
+</div>
