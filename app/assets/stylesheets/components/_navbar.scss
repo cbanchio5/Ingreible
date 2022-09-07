@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: $primary1;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +9,20 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+.navbar {
+  background-color: $primary1;
+  z-index: 2;
+}
+
+.sign-in-button {
+  background-color: $primary;
+  color: rgba(220, 220, 220, 1);
+  font-weight: 400;
+  border-radius: 15%;
+}
+
+.sign-in-button:hover{
+  background-color: #4838383f;
+  color: rgba(220, 220, 220, 1);
 }
