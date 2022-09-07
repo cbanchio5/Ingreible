@@ -1,0 +1,31 @@
+.sign-in {
+  background-color: $white;
+  color: $black;
+}
+
+.gray-border-rounded {
+  border-color: $gray3;
+  border-radius: 15px;
+}
+
+
+.small--text {
+  font-size: 0.7rem;
+}
+
+.sign-up--section{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 800px) {
+  // this css will only be used when the screen size is min 800px
+  .sign-in {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  }
