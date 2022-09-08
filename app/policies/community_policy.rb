@@ -4,10 +4,9 @@ class CommunityPolicy < ApplicationPolicy
     # def resolve
     #   scope.all
     # end
-  end
-
-  def resolve
-    scope.all
+    def resolve
+      scope.all
+    end
   end
 
   def index?
