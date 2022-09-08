@@ -1,7 +1,29 @@
 <h1>Recipes</h1>
+<% @recipes.first(6).each do |recipe| %>
+  <div class="col-6 col-sm-4 ">
+    <div class="card-slider">
+      <%= link_to recipe, class: "text-decoration-none" do %>
+        <%= cl_image_tag recipe.photo.key, height: 148, width: 110, crop: :fill %>
+        <div class="card-slider-infos">
+          <div class="small bold text-center"><%= recipe.name%></div>
+          <div>
+            <div class="smaller">Time</div>
+            <div class="smaller bold"> <%= recipe.time %></div>
+          </div>
+          <a class="bookmark-btn" href="#">
+            <img src="../assets/images/icon/star.svg" />
+          </a>
+        </div>
+      <%end%>
+    </div>
+  </div>
+<%end%>
+
+  <h1>New recipes</h1>
 <% @recipes.each do |recipe|%>
   <li><%= recipe.name%></li>
   <%= cl_image_tag recipe.photo.key, height: 300, width: 400, crop: :fill %>
   <%= link_to 'See details',  recipe, class:"btn-primary" %>
 
-  <%end%>
+<%end%>
+
