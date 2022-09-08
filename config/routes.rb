@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [ :new, :create ]
   end
 
-  resources :community do
+  resources :communities do
     resources :messages
     resources :memberships
   end

@@ -5,4 +5,16 @@ class CommunityPolicy < ApplicationPolicy
     #   scope.all
     # end
   end
+
+  def resolve
+    scope.all
+  end
+
+  def index?
+    true
+  end
+
+  def show?
+    true
+  end
 end
