@@ -3,15 +3,17 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  resources :users, except: [:index]
+  resources :users, except: [:index] do
+    resources :favourites, only: [:index, :show, :destroy]
 
-  resources :favourites, only: [:index, :show, :destroy]
+  end
+
 
   resources :recipes do
     collection do
       get :myrecipes
     end
-    resources :favourites, only: [:create]
+    resources :favourites, only: [:new, :create]
     resources :reviews, only: [ :new, :create ]
   end
 
