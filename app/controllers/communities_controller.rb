@@ -15,6 +15,7 @@ class CommunitiesController < ApplicationController
   def update
     authorize @community
     @community.update(community_params)
+    redirect_to communities_path
   end
 
 
