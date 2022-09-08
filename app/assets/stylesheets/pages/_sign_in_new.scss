@@ -6,6 +6,12 @@
 .gray-border-rounded {
   border-color: $gray3;
   border-radius: 15px;
+  background-color: $white;
+  color:$black;
+}
+.gray-border-rounded:focus {
+  background-color: $white;
+  color:$black;
 }
 
 
