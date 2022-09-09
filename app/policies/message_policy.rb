@@ -6,6 +6,4 @@ class MessagePolicy < ApplicationPolicy
     # end
   end
 
-  def show?
-  end
 end

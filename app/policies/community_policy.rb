@@ -24,4 +24,8 @@ class CommunityPolicy < ApplicationPolicy
   def update?
     edit?
   end
+
+  def message?
+    true
+  end
 end
