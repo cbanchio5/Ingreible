@@ -1,6 +1,20 @@
 <h1>Communitites</h1>
 
-<% @communities.each  do |community|  %>
-  <li><%=  community.name %></li>
+<div class="community--container">
+ <% @communities.each  do |community|  %>
+  <div class="community--card">
+    <div class="community--card__body">
+      <h4><%=  community.name %></h4>
+      <p><%= community.description  %></p>
+    </div>
 
-<% end%>
+  </div>
+  <% end%>
+
+
+
+
+
+
+
+</div>
