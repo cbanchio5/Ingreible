@@ -10,10 +10,12 @@ require "open-uri"
 require "nokogiri"
 require 'faker'
 
+Review.delete_all
 Recipe.delete_all
 User.delete_all
 Community.delete_all
 User.delete_all
+
 
 filepath = 'db/recipes.json'
 
@@ -30,6 +32,8 @@ user1.save!
 puts "Admin user created"
 
 puts "Creating Recipes"
+
+# RECIPES CREATION
 
 recipes.slice!(0, 30).each do |recipe|
   new_recipe = Recipe.new(name: recipe["Name"],
@@ -58,15 +62,14 @@ recipes.slice!(0, 30).each do |recipe|
   end
   puts "finished with the cooking time"
 
-
-
-
   new_recipe.save!
   count += 1
   puts count
 end
 
 puts "finished with the recipes"
+
+# COMMUNITIES CREATION
 
 filepath_communities = 'db/communities.json'
 
@@ -76,14 +79,20 @@ communities = JSON.parse(serialized_data_community)
 
 communities.each do |community|
   new_community = Community.new(name: community["name"], description: community["description"])
+  community_file = URI.open(community["img"])
+  new_community.photo.attach(io: community_file, filename: 'nes.png', content_type: 'image/png')
   new_community.save!
 end
+
+# USERS CREATION
 
 10.times do
   user = User.new(fullname: Faker::Name.name, password: "test1234")
   user.email = "#{user.fullname.split(' ').join('')}@test.com"
   user.save!
  end
+
+#  REVIEWS CREATION
 
 
 puts "adding the reviews"

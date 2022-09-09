@@ -7,7 +7,6 @@
 }
 
 
-
 .community--container {
   display: flex;
   flex-wrap: wrap;
@@ -15,12 +14,16 @@
   max-width: 1200px;
   margin-block: 2rem;
   gap: 2rem;
+  color: $black;
 }
 
-img {
+.community--card_header img {
   max-width: 100%;
   display: block;
   object-fit: cover;
+  object-position: bottom;
+  height: 200px;
+
 }
 
 .community--card {
@@ -31,69 +34,51 @@ img {
   box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
   border-radius: 1em;
   background: $white;
-  background: linear-gradient(to right, $primary3, $primary2);
+  background: linear-gradient(to right, $gray3, $gray4);
 
 }
 
 
 
 .community--card__body {
-  padding: 1rem;
+  padding: 0.7rem;
   display: flex;
   flex-direction: column;
   gap: .5rem;
 }
 
 
-.community--communitytag {
-  align-self: flex-start;
-  padding: .25em .75em;
-  border-radius: 1em;
-  font-size: .75rem;
-}
-
-.tag + .tag {
-  margin-left: .5em;
-}
-
-.community--tag-blue {
-  background: #56CCF2;
-background: linear-gradient(to bottom, #2F80ED, #56CCF2);
-  color: #fafafa;
-}
-
-.community--tag-brown {
-  background: #D1913C;
-background: linear-gradient(to bottom, #FFD194, #D1913C);
-  color: #fafafa;
-}
-
-.community--tag-red {
-  background: #cb2d3e;
-background: linear-gradient(to bottom, #ef473a, #cb2d3e);
-  color: #fafafa;
-}
-
 .community--card__body h4 {
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-transform: capitalize;
 }
 
 .community--card__footer {
   display: flex;
-  padding: 1rem;
+  padding: 0.5rem;
   margin-top: auto;
 }
 
-.community--user {
-  display: flex;
-  gap: .5rem;
-}
 
-.community--user__image {
-  border-radius: 50%;
-}
 
-.community--user__info > small {
-  color: #666;
-}
+@media screen and (min-width: 800px) {
+  // this css will only be used when the screen size is min 800px
+  .community--card_header img {
+    max-width: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: bottom;
+    height: 300px;
+
+  }
+  .community--card__body h4 {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+  }
+  .community--card__footer {
+    display: flex;
+    padding: 1rem;
+    margin-top: auto;
+  }
+
+  }

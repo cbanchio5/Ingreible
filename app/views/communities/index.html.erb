@@ -1,20 +1,21 @@
-<h1>Communitites</h1>
+<div class="container">
+  <h1>Communities</h1>
+  <div class="community--container">
 
-<div class="community--container">
- <% @communities.each  do |community|  %>
-  <div class="community--card">
-    <div class="community--card__body">
-      <h4><%=  community.name %></h4>
-      <p><%= community.description  %></p>
+  <% @communities.each  do |community|  %>
+    <div class="community--card">
+      <div class="community--card_header">
+        <%= cl_image_tag community.photo.key, height: 300, width: 400, crop: :fill %>
+      </div>
+      <div class="community--card__body">
+        <h4><%=  community.name %></h4>
+        <p><%= community.description.truncate(70)  %></p>
+      </div>
+      <div class="community--card__footer">
+        <%= link_to 'Join',  '#', class:"btn btn-primary" %>
+      </div>
+
     </div>
-
+    <% end%>
   </div>
-  <% end%>
-
-
-
-
-
-
-
 </div>
