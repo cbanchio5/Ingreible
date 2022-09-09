@@ -21,9 +21,15 @@ serialized_data = File.read(filepath)
 
 recipes = JSON.parse(serialized_data)
 
+puts "Creating admin user"
+
 count = 0
 user1 = User.new(fullname: "Admin", email: "admin@ingredible.me", admin:  true, password: "test1234")
 user1.save!
+
+puts "Admin user created"
+
+puts "Creating Recipes"
 
 recipes.slice!(0, 30).each do |recipe|
   new_recipe = Recipe.new(name: recipe["Name"],
@@ -43,18 +49,24 @@ recipes.slice!(0, 30).each do |recipe|
     file = URI.open(element.attribute("src").value)
     new_recipe.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   end
+
+  puts "adding the cooking time"
   html_doc.search('span').each do |element|
     if element.text === "Cook:"
       new_recipe.time = element.next_element.text
     end
-
   end
+  puts "finished with the cooking time"
+
+
 
 
   new_recipe.save!
   count += 1
   puts count
 end
+
+puts "finished with the recipes"
 
 filepath_communities = 'db/communities.json'
 
@@ -68,7 +80,23 @@ communities.each do |community|
 end
 
 10.times do
- user = User.new(fullname: Faker::Name.name, password: "test1234")
- user.email = "#{user.fullname.split(' ').join('')}@test.com"
- user.save!
+  user = User.new(fullname: Faker::Name.name, password: "test1234")
+  user.email = "#{user.fullname.split(' ').join('')}@test.com"
+  user.save!
+ end
+
+
+puts "adding the reviews"
+
+filepath_reviews = 'db/reviews.json'
+
+serialized_data_reviews = File.read(filepath_reviews)
+
+reviews = JSON.parse(serialized_data_reviews)
+
+reviews.each do |review|
+  new_review = Review.new(content: review["review"], rating: (1..5).to_a.sample, user: User.order("RANDOM()").first, recipe:Recipe.order("RANDOM()").first)
+  new_review.save!
 end
+
+puts "finish with the reviews"
