@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :users, except: [:index] do
     resources :favourites, only: [:index, :show, :destroy]
-
+    resources :memberships, only: [:index, :show, :destroy]
   end
 
 
@@ -14,12 +14,13 @@ Rails.application.routes.draw do
       get :myrecipes
     end
     resources :favourites, only: [:new, :create]
+
     resources :reviews, only: [ :new, :create ]
   end
 
   resources :communities do
     resources :messages
-    resources :memberships
+    resources :memberships, only: [:new, :create]
   end
 
 end

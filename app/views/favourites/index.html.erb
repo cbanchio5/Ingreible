@@ -1,5 +1,6 @@
 <h1>here are your favouritrs</h1>
 <% @favourites.each do |favourite| %>
 <p style="color:black"> FAV ID IS <%= favourite.id %>  user id is <%= favourite.user_id %> recipe id is <%= favourite.recipe_id %></p>
+<%= link_to 'Delete this recipe', user_favourite_path(current_user.id, favourite.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-lg btn-danger" %>
 
 <% end %>
