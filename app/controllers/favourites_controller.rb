@@ -24,7 +24,8 @@ def create
   @favourite.user_id = current_user.id
   #relationship does not exist
  if  @favourite.save
-  redirect_to user_favourites_path(current_user.id)
+  flash[:notice] = "Saved succesfully"
+  #redirect_to user_favourites_path(current_user.id)
  else
   flash[:notice] = "Error"
 
