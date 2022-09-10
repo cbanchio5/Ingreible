@@ -1,1 +1,6 @@
 <h1><%=@community.name %></h1>
+
+<%= simple_form_for [@community, @message] do |f| %>
+  <%= f.input :message, label: 'Insert your message' %>
+  <%= f.button :submit %>
+<% end %>
