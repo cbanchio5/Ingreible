@@ -23,7 +23,7 @@ class MembershipsController < ApplicationController
     @membership.user_id = current_user.id
     #relationship does not exist
    if  @membership.save
-    redirect_to user_memberships_path(current_user.id)
+    redirect_to community_messages_path(@community)
    else
     flash[:notice] = "Error"
    end
