@@ -14,15 +14,15 @@ class MessagePolicy < ApplicationPolicy
   end
 
   def show?
-    user.communities.include?(scope.all.first.community)
+    user.communities.include?(record.community)
   end
 
   def new?
-    user.communities.include?(scope.all.first.community)
+
   end
 
   def create?
-    user.communities.include?(scope.all.first.community)
+    user.communities.include?(record.community)
   end
 
   def destroy?

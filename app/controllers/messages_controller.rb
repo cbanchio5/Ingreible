@@ -16,7 +16,6 @@ class MessagesController < ApplicationController
 
   def new
     # we need @restaurant in our `simple_form_for`
-
     @message = Message.new
     authorize @message
     authorize @community
@@ -25,13 +24,20 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     # we need `recipe_id` to associate review with corresponding recipe
-    authorize @message
+
     # authorize @community
     @message.user_id = current_user.id
     @message.community_id = @community.id
+    authorize @message
     @message.save!
     redirect_to community_messages_path(@community)
+  end
 
+  def destroy
+    @message = Message.find(params[:id])
+    authorize @message
+    @message.destroy
+    redirect_to community_messages_path(@message.community)
   end
 
 

@@ -20,8 +20,10 @@ Rails.application.routes.draw do
   end
 
   resources :communities do
-    resources :messages
+    resources :messages, except: [:destroy]
     resources :memberships
   end
+
+  resources :messages, only: [:destroy]
 
 end
