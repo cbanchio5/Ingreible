@@ -33,6 +33,8 @@ end
 
 def destroy
   @favourite = Favourite.find(params[:id])
+  authorize @favourite
+  #raise
   @favourite.destroy
   redirect_to user_favourites_path(current_user.id)
 end
