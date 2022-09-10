@@ -5,20 +5,24 @@ class MessagePolicy < ApplicationPolicy
     #   scope.all
     # end
     def resolve
-      scope.all
+      if user.communities.include?(scope.all.first.community)
+       scope.all
+      else
+        raise Pundit::NotAuthorizedError, 'Not allowed to view this action'
+      end
     end
   end
 
   def show?
-    true
+    user.communities.include?(scope.all.first.community)
   end
 
   def new?
-    current.user?
+    user.communities.include?(scope.all.first.community)
   end
 
   def create?
-    current.user?
+    user.communities.include?(scope.all.first.community)
   end
 
   def destroy?

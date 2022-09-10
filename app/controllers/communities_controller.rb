@@ -8,7 +8,7 @@ class CommunitiesController < ApplicationController
 
   def show
     authorize @community
-    @message = Message.new
+
   end
 
   def edit

@@ -1,10 +1,17 @@
 class MessagesController < ApplicationController
 
-  before_action :set_community, only: [:new, :create]
+  before_action :set_community, only: [:new, :create, :index]
+
+  def index
+    # authorize @community
+    @messages = policy_scope(Message).where(community_id: @community.id)
+    @message = Message.new
+  end
 
   def show
     @message = Message.find(params[:id])
     authorize @message
+    @new_message = Message.new
   end
 
   def new
@@ -19,9 +26,10 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     # we need `recipe_id` to associate review with corresponding recipe
     authorize @message
-    authorize @community
+    # authorize @community
     @message.user_id = current_user.id
     @message.community_id = @community.id
+    @message.save!
     redirect_to community_messages_path(@community)
 
   end
