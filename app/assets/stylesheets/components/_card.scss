@@ -1,6 +1,10 @@
+// Card slider
+
 .card-slider {
   overflow: hidden;
   background: $gray4;
   border-radius: 12px;
-  color: $gray1;
+  flex: 1 1 auto;
+  position: relative;
+  width: 185px;
 }
