@@ -8,6 +8,9 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+ENV['GOOGLE_CLIENT_ID'] = '677378660975-uhiqc68dl8si6kr63bsd537oj32fuvqj.apps.googleusercontent.com'
+ENV['GOOGLE_CLIENT_SECRET']= "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"
+
   # Do not eager load code on boot.
   config.eager_load = false
 

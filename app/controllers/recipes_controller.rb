@@ -6,6 +6,7 @@ class RecipesController < ApplicationController
     @recipes = policy_scope(Recipe).order(created_at: :desc)
     @reviews = policy_scope(Review)
     @favourites = policy_scope(Favourite)
+    @communities = policy_scope(Community)
   end
 
   # if params[:query].present?

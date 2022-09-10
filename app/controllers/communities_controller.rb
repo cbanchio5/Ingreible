@@ -1,16 +1,17 @@
 class CommunitiesController < ApplicationController
   before_action :set_community, only: [:show, :update, :edit, :message]
 
-  def message
-    @messages = @community.message
-  end
-
   def index
     @communities = policy_scope(Community)
+    # @membership = @communities.membership
+    # authorize @membership
+
   end
 
   def show
     authorize @community
+
+
   end
 
   def edit

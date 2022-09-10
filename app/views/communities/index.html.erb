@@ -1,5 +1,6 @@
 <div class="container">
-  <h1>Communities</h1>
+  <h1 class="text-black">Our Communities</h1>
+
   <div class="community--container">
 
   <% @communities.each  do |community|  %>
@@ -12,7 +13,7 @@
         <p><%= community.description.truncate(70)  %></p>
       </div>
       <div class="community--card__footer">
-        <%= link_to 'Show details',  community, class:"btn btn-primary" %>
+        <%= button_to 'Join',  community_memberships_path(community), method: :post , class:"btn btn-primary" %>
       </div>
 
     </div>
