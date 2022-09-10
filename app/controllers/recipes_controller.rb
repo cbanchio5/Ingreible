@@ -5,6 +5,7 @@ class RecipesController < ApplicationController
   def index
     @recipes = policy_scope(Recipe).order(created_at: :desc)
     @reviews = policy_scope(Review)
+    @favourites = policy_scope(Favourite)
     @communities = policy_scope(Community)
   end
 
