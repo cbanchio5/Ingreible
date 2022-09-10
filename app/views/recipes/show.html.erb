@@ -1,6 +1,36 @@
-<div class="container">
+<div class="col-12">
+  <div class="relative">
+    <%= cl_image_tag @recipe.photo.key, class: "img-cover aspect-landscape" %>
+    <div class="absolute top-0 justify-content-end z-20 d-flex w-full smaller pt-2 pe-2">
+      <div class="badge_rating d-flex text-black">
+        <%= image_tag "icon/rating-star.svg" %>3.5
+      </div>
+    </div>
+  </div>
+</div>
 
-<h1>The recipe is</h1>
+<div class="recipe-info d-flex justify-content-between w-full py-3 px-4 mt-0 text-gray3 small bg-color-primary5">
+  <div class="text-center">
+    Difficulty <br><span class="bold text-gray1"> <%= @recipe.difficulty %></span>
+  </div>
+  <div class="text-center">
+    Time <br><span class="bold text-gray1"> <%= @recipe.time %></span>
+  </div>
+  <div class="text-center">
+    Servings <br><span class="bold text-gray1"> <%= @recipe.serves %></span>
+  </div>
+</div>
+<div class="container-fluid">
+  <h2 class="header bold text-gray1 text-center mt-3"><%= @recipe.name %></h2>
+  <button type="button" class="btn btn-primary btn-lg btn-block">Start cooking</button>
+</div>
+
+
+<div class="container-fluid mt-3">
+  <h2 class="normal bold text-gray1">Ingredients</h2>
+  <div class="text-gray1 small text-gray2"><%= @recipe.ingredients %></div>
+</div>
+<p class="lead">ingredients: <%= @recipe.ingredients %></p>
 
 <h2 class="featurette-heading">Title: <%= @recipe.name %></h2>
 <div class="container">
@@ -15,9 +45,7 @@
       <div class="row ">
 
 
- <div class="col-sm-12 col-md-12 col-lg-12">
-            <%= cl_image_tag @recipe.photo.key,   crop: :fill, class: "" %>
-          </div>
+
 
 
       </div>

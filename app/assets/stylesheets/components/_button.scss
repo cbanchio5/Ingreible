@@ -1,0 +1,10 @@
+// ICON BUTTON
+.icon_button {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  background: $white;
+  border-radius: 30px;
+}
