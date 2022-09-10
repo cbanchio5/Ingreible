@@ -17,6 +17,12 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 
 gem 'cloudinary', '~> 1.16.0'
 
+#Oauth
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'oa-oauth', :require => 'omniauth/oauth'
+
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server

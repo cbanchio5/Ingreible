@@ -5,7 +5,6 @@ class ReviewsController < ApplicationController
     authorize @review
   end
 
-
   def new
     # we need @restaurant in our `simple_form_for`
     @recipe = Recipe.find(params[:recipe_id])
@@ -13,6 +12,7 @@ class ReviewsController < ApplicationController
     authorize @review
     authorize @recipe
   end
+
   def create
     @review = Review.new(review_params)
     # we need `recipe_id` to associate review with corresponding recipe
