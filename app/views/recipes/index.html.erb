@@ -32,9 +32,6 @@
   </div>
 </div>
 
-
-
-
 <div class="container-fluid mt-4">
   <h2 class="normal bold text-black">5 Broccoli recipes to make this week </h2>
   <div class="row flex-row flex-nowrap overflow-scroll hide-scrollbar">
@@ -62,6 +59,22 @@
                 <a class="icon_button" href="#"><%= image_tag "icon/bookmark.svg", class: "icon" %></a>
               </div>
             </div>
+          <%end%>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
+
+<div class="container-fluid mt-4">
+  <h2 class="normal bold text-black">Communities for you</h2>
+  <div class="row flex-row flex-nowrap overflow-scroll hide-scrollbar">
+     <% @communities.first(5).each do |community|  %>
+      <div class="col-6 col-sm-4 ">
+        <div class="card-slider relative w-full">
+        <%= cl_image_tag community.photo.key, class: "img-cover" %>
+          <%= link_to community, class: "text-decoration-none" do %>
+            <div class="small bold text-gray1 text-center mt-3"><%= community.name%></div>
           <%end%>
         </div>
       </div>
