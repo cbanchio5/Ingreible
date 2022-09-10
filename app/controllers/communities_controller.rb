@@ -11,6 +11,7 @@ class CommunitiesController < ApplicationController
   def show
     authorize @community
 
+
   end
 
   def edit

@@ -35,6 +35,6 @@ class MembershipsController < ApplicationController
     authorize @membership
     #raise
     @membership.destroy
-    redirect_to user_memberships_path(current_user.id)
+    redirect_to communities_path
   end
 end

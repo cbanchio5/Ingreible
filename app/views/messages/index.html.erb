@@ -1,6 +1,7 @@
 <div class="container">
 
   <h1 class="text-black"><%=@community.name  %></h1>
+   <%= link_to "Leave", community_membership_path(current_user.id, @membership.id), class:"btn btn-sm btn-outline-secondary m-1 border-0", method: :delete, data: { confirm: 'Are you sure?' } %>
   <% @messages.each do |message| %>
         <div class="media text-muted pt-3">
           <img  alt="32x32" class="mr-2 rounded" style="width: 32px; height: 32px;" src="https://cdn-icons-png.flaticon.com/512/190/190673.png?w=360">

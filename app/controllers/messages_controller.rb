@@ -6,6 +6,9 @@ class MessagesController < ApplicationController
     # authorize @community
     @messages = policy_scope(Message).where(community_id: @community.id)
     @message = Message.new
+    # @memberships = policy_scope(Membership).where(current_user.id)
+    @membership = Membership.find_by(user_id: current_user.id, community_id: @community.id)
+
   end
 
   def show
