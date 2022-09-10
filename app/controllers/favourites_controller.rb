@@ -1,7 +1,7 @@
 class FavouritesController < ApplicationController
 def index
 
-  @favourites = policy_scope(Favourite)
+  @favourites = policy_scope(Favourite).where(user_id: current_user)
   # if @favourites.user_id == current_user.id
   #   @favourites = policy_scope(Favourite)
   # end
