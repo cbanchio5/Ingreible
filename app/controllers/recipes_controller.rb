@@ -21,6 +21,8 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     # @booking = Booking.new
     authorize @recipe
+    @review = Review.new
+    authorize @review
     # authorize @booking
   end
 
