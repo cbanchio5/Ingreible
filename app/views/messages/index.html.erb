@@ -1,7 +1,11 @@
-<div class="container">
 
-  <h1 class="text-black"><%=@community.name  %></h1>
-   <%= link_to "Leave", community_membership_path(current_user.id, @membership.id), class:"btn btn-sm btn-outline-secondary m-1 border-0", method: :delete, data: { confirm: 'Are you sure?' } %>
+
+  <div class="blog--header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @community.photo.key, height: 500, crop: :fill %>')">
+    <h1 class="text-black"><%=@community.name  %></h1>
+  </div>
+  <div class="container">
+    <h3 class="text-black">Leave a comment</h3>
+   <%= link_to "Leave", community_membership_path(current_user.id, @membership.id), class:"btn btn-sm btn-danger ", method: :delete, data: { confirm: 'Are you sure?' } %>
   <% @messages.each do |message| %>
         <div class="media text-muted pt-3">
             <% if message.user.photo.attached? %>
@@ -16,14 +20,15 @@
             <%= message.message %>
             <%= message.created_at.strftime('%m/%d/%Y')  %>
         </p>
-        <%= link_to "Delete", message_path(message), class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
-
+          <% if policy(message).destroy? %>
+            <%= link_to "Delete", message_path(message), class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
         </div>
         <% end %>
 
         </div>
   <%= simple_form_for [@community, @message] do |f| %>
     <%= f.input :message, label: 'Insert your message' %>
-    <%= f.button :submit, "Leave a Message", class: "btn btn-primary" %>
+    <%= f.button :submit, "Leave a Message", class: "btn btn-primary mb-3" %>
   <% end %>
 </div>
