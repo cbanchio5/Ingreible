@@ -1,5 +1,10 @@
 <div class="container">
   <h1 class="text-black">Our Communities</h1>
+  <% flash.each do |type, msg| %>
+    <div class="danger-text">
+      <%= msg %>
+    </div>
+  <% end %>
 
   <div class="community--container">
 
