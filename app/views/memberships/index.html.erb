@@ -4,7 +4,7 @@
 
   <% @memberships.each do |membership| %>
   <p class="text-gray3"> <%= membership.community.name  %> </p>
-  <%= link_to 'Leave Community', user_membership_path(current_user.id, membership.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-lg btn-danger" %>
-
+  <%= link_to 'Leave Community', user_membership_path(current_user.id, membership.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+  <%= link_to 'View', community_messages_path(membership.community.id), class:"btn btn-primary" %>
   <%end  %>
 </div>
