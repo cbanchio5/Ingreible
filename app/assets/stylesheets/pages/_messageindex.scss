@@ -4,4 +4,28 @@
   margin:0;
   background-repeat: no-repeat, repeat;
   background-size: auto;
+  display:flex;
+  justify-content: center;
+}
+
+.title--header {
+  font-size: 3.5rem
+}
+
+.comment-heading {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  font-size: 14px;
+  color: $black
+}
+
+.comment-info {
+  color: rgba(0, 0, 0, 0.5);
+  margin-left: 10px;
+}
+
+.comment-body {
+  display:flex;
+  justify-content: flex-start;
 }
