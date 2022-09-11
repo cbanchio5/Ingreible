@@ -5,9 +5,13 @@
       <div class="logo-image">
       </div>
       <div class="catch-frase">
-        <h3>
-          Cooking, another thing of your mind
-        </h3>
+        <% if user_signed_in? %>
+        <h3>Welcome back, <%= current_user.fullname %>!</h3>
+        <% else %>
+          <h3>
+            Cooking, another thing of your mind
+          </h3>
+        <%end  %>
       </div>
 
       <div class="button--join">
