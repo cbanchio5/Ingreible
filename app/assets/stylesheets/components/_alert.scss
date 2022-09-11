@@ -4,3 +4,9 @@
   right: 16px;
   z-index: 1000;
 }
+
+.flax--message {
+  animation-name: disappearAnimation;
+  animation-duration: 3000ms;
+  animation-fill-mode: forwards;
+}
