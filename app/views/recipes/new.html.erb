@@ -10,14 +10,21 @@
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
       <div class="form-inputs">
-        <%= f.input :name %>
-        <%= f.input :ingredients %>
-        <%= f.input :difficulty %>
-        <%= f.input :time %>
-        <%= f.input :steps %>
-        <%= f.input :serves %>
-        <%= f.input :category %>
-        <%= f.input :photo, as: :file, input_html: { multiple: false } %>
+        <%= f.input :name, input_html: { class: "gray-border-rounded"},
+         :label_html => { :class => 'fs-6' } %>
+        <%= f.input :ingredients, input_html: { class: "gray-border-rounded"},
+         :label_html => { :class => 'fs-6' } %>
+        <%= f.input :difficulty, input_html: { class: "gray-border-rounded"},
+         :label_html => { :class => 'fs-6' } %>
+        <%= f.input :time, input_html: { class: "gray-border-rounded"},
+         :label_html => { :class => 'fs-6' } %>
+        <%= f.input :steps, input_html: { class: "gray-border-rounded"},
+         :label_html => { :class => 'fs-6' } %>
+        <%= f.input :serves, input_html: { class: "gray-border-rounded"},
+         :label_html => { :class => 'fs-6' } %>
+        <%= f.input :category, input_html: { class: "gray-border-rounded"},
+          :label_html => { :class => 'fs-6' } %>
+        <%= f.input :photo, as: :file, input_html: { multiple: false, class: "gray-border-rounded" }, :label_html => { :class => 'fs-6' } %>
       </div>
     </div>
 
