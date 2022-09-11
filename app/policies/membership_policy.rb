@@ -26,8 +26,8 @@ class MembershipPolicy < ApplicationPolicy
     user.present?
   end
 
-  def mymemberships?
-    true
-  end
+  # def mymemberships?
+  #   true
+  # end
 
 end

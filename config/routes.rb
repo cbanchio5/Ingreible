@@ -27,11 +27,11 @@ Rails.application.routes.draw do
 
   end
 
-  resources :memberships, only: [] do
-    collection do
-      get :mymemberships
-    end
-  end
+  # resources :memberships, only: [] do
+  #   collection do
+  #     get :mymemberships
+  #   end
+  # end
 
   resources :messages, only: [:destroy]
 

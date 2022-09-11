@@ -1,8 +1,10 @@
 <div class="container">
-<h1>here are your favouritrs</h1>
-<% @memberships.each do |membership| %>
-<p style="color:black"> FAV ID IS <%= membership.id %>  user id is <%= membership.user_id %> recipe id is <%= membership.community_id %></p>
-<%= link_to 'Leave Community', user_membership_path(current_user.id, membership.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-lg btn-danger" %>
 
-<% end %>
+  <h1 class="text-gray3">My Communities</h1>
+
+  <% @memberships.each do |membership| %>
+  <p class="text-gray3"> <%= membership.community.name  %> </p>
+  <%= link_to 'Leave Community', user_membership_path(current_user.id, membership.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-lg btn-danger" %>
+
+  <%end  %>
 </div>

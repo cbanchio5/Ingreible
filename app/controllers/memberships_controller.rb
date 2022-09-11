@@ -38,10 +38,10 @@ class MembershipsController < ApplicationController
     redirect_to communities_path
   end
 
-  def mymemberships
-    @memberships = policy_scope(Membership).where(user_id: current_user).includes(:community)
-    authorize @memberships
+  # def mymemberships
+  #   @memberships = policy_scope(Membership).where(user_id: current_user).includes(:community)
+  #   authorize @memberships
 
-  end
+  # end
 
 end
