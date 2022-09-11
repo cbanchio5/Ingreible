@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @recipes = policy_scope(Recipe).order(created_at: :desc)
+    @recipes = policy_scope(Recipe).order(created_at: :desc).includes(:reviews)
     @reviews = policy_scope(Review)
     @favourites = policy_scope(Favourite)
     @communities = policy_scope(Community)
