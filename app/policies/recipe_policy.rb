@@ -21,7 +21,7 @@ class RecipePolicy < ApplicationPolicy
     user.present?
   end
   def destroy?
-    user.present?
+    record.user == user
   end
   def update?
     user.present?

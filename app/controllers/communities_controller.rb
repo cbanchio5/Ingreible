@@ -10,8 +10,6 @@ class CommunitiesController < ApplicationController
 
   def show
     authorize @community
-
-
   end
 
   def edit
@@ -24,6 +22,9 @@ class CommunitiesController < ApplicationController
     redirect_to communities_path
   end
 
+  def mycommunities
+    @memberships = Membership.where(user_id: current_user.id)
+  end
 
   private
 

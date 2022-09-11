@@ -10,10 +10,10 @@ class ReviewPolicy < ApplicationPolicy
     true
   end
   def new?
-    current.user?
+    user.present?
   end
   def create?
-    current.user?
+    user.present?
   end
   def destroy?
     user.admin

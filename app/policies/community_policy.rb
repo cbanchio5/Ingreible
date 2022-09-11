@@ -13,9 +13,17 @@ class CommunityPolicy < ApplicationPolicy
     true
   end
 
-  # def create?
-  #   true
-  # end
+  def new?
+    create?
+  end
+
+  def create?
+    user.admin
+  end
+
+  def mycommunities?
+    true
+  end
 
   def show?
     true

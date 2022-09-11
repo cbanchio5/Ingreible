@@ -3,11 +3,12 @@
     <%= cl_image_tag @recipe.photo.key, class: "img-cover aspect-landscape" %>
     <div class="absolute top-0 justify-content-end z-20 d-flex w-full smaller pt-2 pe-2">
       <div class="badge_rating d-flex text-black">
-        <%= image_tag "icon/rating-star.svg" %>3.5
+        <%= image_tag "icon/rating-star.svg" %><%= @recipe.reviews.average(:rating).to_f.round(2)  %>
       </div>
     </div>
   </div>
 </div>
+
 
 <div class="recipe-info d-flex justify-content-between w-full py-3 px-4 mt-0 text-gray3 small bg-color-primary5">
   <div class="text-center">
@@ -47,6 +48,31 @@
 
 <div class="container">
   <%= link_to 'Add to favourites',  recipe_favourites_path(@recipe), method: :post, class:"btn-primary" %>
-  <%# link_to "Profile", profile_path(@profile.id, param1: 'value1', param2: 'value2'), method: :post %>
-  <%= link_to 'Delete this recipe', @recipe, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-lg btn-danger" %>
+  <div class="modal--review container sign-in mt-5" data-controller="demo">
+    <div class="modal" data-demo-target="modal" data-controller="modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="fw-semibold fs-1">Leave  review</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-action="click->modal#close" ></button>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for [ @recipe, @review ] do |f| %>
+              <%= f.input :content %>
+              <%= f.input :rating %>
+              <%= f.submit "Submit review", class: "btn btn-primary w-100" %>
+            <% end %>
+          </div>
+          <div class="modal-footer">
+            <button data-action="click->modal#close" class="btn btn-secondary">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= button_to 'Leave a review',  '#', class:"btn btn-primary mb-3", :data => {  :action => 'demo#launchDemo' } %>
+    <%# link_to "Profile", profile_path(@profile.id, param1: 'value1', param2: 'value2'), method: :post %>
+  </div>
+   <% if policy(@recipe).destroy? %>
+    <%= link_to 'Delete this recipe', @recipe, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-lg btn-danger" %>
+   <% end %>
 </div>
