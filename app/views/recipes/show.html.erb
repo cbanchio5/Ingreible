@@ -47,6 +47,7 @@
 
 <div class="container">
   <%= link_to 'Add to favourites',  recipe_favourites_path(@recipe), method: :post, class:"btn-primary" %>
+  <%= link_to 'Leave a review',  new_recipe_review_path(@recipe), class:"btn-primary" %>
   <%# link_to "Profile", profile_path(@profile.id, param1: 'value1', param2: 'value2'), method: :post %>
   <%= link_to 'Delete this recipe', @recipe, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-lg btn-danger" %>
 </div>
