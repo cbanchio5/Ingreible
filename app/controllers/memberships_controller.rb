@@ -25,7 +25,7 @@ class MembershipsController < ApplicationController
    if  @membership.save
     redirect_to community_messages_path(@community)
    else
-    flash[:notice] = "Error"
+    redirect_to communities_path, notice: "You already joined this community"
    end
 
   end
