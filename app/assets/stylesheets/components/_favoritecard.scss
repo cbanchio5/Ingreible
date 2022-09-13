@@ -1,0 +1,23 @@
+.card--favorite {
+  height: 250px;
+  width: auto;
+  display:flex;
+  align-items: flex-end;
+  border-radius: 20px;
+  justify-content: space-between;
+}
+
+.favorite--title{
+  font-size: 1rem;
+}
+
+.card--favorite--data {
+  display:flex;
+  justify-content: space-between;
+}
+
+.row {
+display:flex;
+align-items: center;
+justify-content: center;
+}
