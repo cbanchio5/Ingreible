@@ -1,26 +1,24 @@
+
 <div class="container">
   <h1 class="text-black">Favorites</h1>
+      <div class="row">
+        <% @favourites.each do |favorite| %>
+          <div class="container--favorite my-4">
 
-  <%# <% @favourites.each do |favourite| %>
+                  <div class="col-12 col-lg-3">
+                      <div class="card--favorite " style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('<%= cl_image_path favorite.recipe.photo.key, height: 300, crop: :fill %>')">
 
+                        <div class="card--favorite--data">
+                          <%= link_to user_favourite_path(current_user.id, favorite.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"d-flex justify-content-start" do%>
+                            <%= image_tag "icon/bookmark.svg", class: "icon" %>
+                          <% end %>
+                          <h3 class="text-white favorite--title m-3"><%= favorite.recipe.name  %></h3>
+                        </div>
+                      <p class="m-3"><i class="fas fa-clock"></i> <%= favorite.recipe.time  %></p>
+                    </div>
+                  </div>
 
-
-
-  <% @favourites.each do |favorite| %>
-  <div class="container--favorite my-4">
-   <div class="row">
-
-    <div class="card--favorite col-12 col-lg-6" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('<%= cl_image_path favorite.recipe.photo.key, height: 300, crop: :fill %>')">
-
-      <div class="card--favorite--data">
-        <%= link_to user_favourite_path(current_user.id, favorite.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"d-flex justify-content-start" do%>
-          <%= image_tag "icon/bookmark.svg", class: "icon" %>
-        <% end %>
-        <h3 class="text-white favorite--title m-3"><%= favorite.recipe.name  %></h3>
-      </div>
-      <p class="m-3"><i class="fas fa-clock"></i> <%= favorite.recipe.time  %></p>
-    </div>
-
-    <% end %>
-    </div>
-  </div>
+              <% end %>
+            </div>
+        </div>
+</div>
