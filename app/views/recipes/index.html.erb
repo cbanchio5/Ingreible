@@ -1,13 +1,22 @@
 
 <div class="container-fluid mt-4">
-  <%= form_tag recipes_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a recipe"
-    %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+  <div class="search--bar--container m-3">
+    <h1 class="text-black d-flex justify-content-center">Search recipes</h1>
+    <div class="search--bar">
+    <%= form_tag recipes_path, method: :get, :class => 'd-flex justify-content-start' do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control gray-border-rounded",
+        placeholder: "Find a recipe"
+      %>
+      <%# <%= submit_tag "Search", class: "btn btn-primary mx-3 btn-sm text-white" %>
+      <%= button_tag type: 'submit', class: "btn btn-primary mx-3 btn-sm text-white" do %>
+          <i class="fas fa-sliders-h fa-lg"></i>
+      <% end %>
+
+    <% end %>
+    </div>
+  </div>
   <div class="row flex-row flex-nowrap overflow-scroll hide-scrollbar">
     <% @recipes.first(6).each do |recipe| %>
       <div class="col-6 col-sm-4 ">
