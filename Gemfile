@@ -20,7 +20,8 @@ gem 'cloudinary', '~> 1.16.0'
 #Oauth
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
-gem 'oa-oauth', :require => 'omniauth/oauth'
+gem 'activerecord-session_store'
+gem "omniauth-rails_csrf_protection"
 
 
 # Use postgresql as the database for Active Record
