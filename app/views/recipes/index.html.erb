@@ -1,5 +1,13 @@
 
 <div class="container-fluid mt-4">
+  <%= form_tag recipes_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a recipe"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
   <div class="row flex-row flex-nowrap overflow-scroll hide-scrollbar">
     <% @recipes.first(6).each do |recipe| %>
       <div class="col-6 col-sm-4 ">

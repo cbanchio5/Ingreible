@@ -3,10 +3,13 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
+
     @recipes = policy_scope(Recipe).order(created_at: :desc).includes(:reviews)
+    @recipes = Recipe.search_by_name_and_ingredients(params[:query]) if params[:query].present?
     @reviews = policy_scope(Review)
     @favourites = policy_scope(Favourite)
     @communities = policy_scope(Community)
+
   end
 
   # if params[:query].present?
