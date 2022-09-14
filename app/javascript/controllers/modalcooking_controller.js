@@ -47,12 +47,16 @@ export default class extends Controller {
     //Disable next button if current step is last step
     if (nextStep === totalSteps) {
       this.nextTarget.setAttribute("disabled", "")
+    } else {
+      this.nextTarget.removeAttribute('disabled')
     }
 
     //Able the previous button if not in first step
 
     if(nextStep > 1) {
       this.previousTarget.removeAttribute('disabled')
+    } else {
+      this.previousTarget.setAttribute("disabled", "")
     }
 
     //Update step title
@@ -67,11 +71,45 @@ export default class extends Controller {
     // this.contentTarget.querySelectorAll('.step')[stepNumber + 1].classList.remove('inactive--div')
 
 
-
-
   }
 
   previous() {
-    console.log("PREVIOUS")
+    //Get total steps of recipe
+    let totalSteps = this.contentTarget.querySelectorAll('.step').length
+
+    //Step text for div
+    let step = this.indexTarget.innerText
+
+    //Extract number of String
+    let stepNumber = step.replace(/\D/g, '') * 1
+
+    let previousStep = stepNumber - 1
+
+    //Disable next button if current step is last step
+    if (previousStep === totalSteps) {
+      this.nextTarget.setAttribute("disabled", "")
+    } else {
+      this.nextTarget.removeAttribute('disabled')
+    }
+
+    //Able the previous button if not in first step
+
+    if(previousStep > 1) {
+      this.previousTarget.removeAttribute('disabled')
+    } else {
+      this.previousTarget.setAttribute("disabled", "")
+    }
+
+    //Update step title
+
+    this.indexTarget.innerText = step.replace(stepNumber, previousStep)
+
+    //Add inactive class again to next step
+    this.contentTarget.querySelectorAll('.step')[previousStep].classList.toggle('inactive--div')
+
+    //Add active class to previous step
+
+    this.contentTarget.querySelectorAll('.step')[previousStep - 1].classList.toggle('inactive--div')
+
   }
 }
