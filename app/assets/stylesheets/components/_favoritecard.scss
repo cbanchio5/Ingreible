@@ -5,6 +5,9 @@
   align-items: flex-end;
   border-radius: 20px;
   justify-content: space-between;
+  background-size: cover;
+  flex-direction: column;
+  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.6);
 }
 
 .favorite--title{
@@ -13,11 +16,24 @@
 
 .card--favorite--data {
   display:flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: flex-start;
 }
 
-.row {
-display:flex;
-align-items: center;
-justify-content: center;
+.container--favorite {
+  display:grid;
+  grid-template-columns: 1fr;
 }
+
+
+
+@media screen and (min-width: 800px) {
+  // this css will only be used when the screen size is min 800px
+  .container--favorite {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+  }
+
+
+  }
