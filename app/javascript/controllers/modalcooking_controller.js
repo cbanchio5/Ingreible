@@ -1,6 +1,8 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
+
+  static target = ["index"];
     initialize() {
 
     }
@@ -18,4 +20,14 @@ export default class extends Controller {
     this.element.classList.remove("show");
     document.getElementsByClassName("modal-backdrop")[0].remove();
 }
+
+  next() {
+
+    console.log("NEXT")
+
+  }
+
+  prevous() {
+    console.log("PREVIOUS")
+  }
 }

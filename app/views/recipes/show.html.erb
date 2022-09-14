@@ -68,9 +68,38 @@
         </div>
       </div>
     </div>
+
+
+    <%# COOKING MODAL %>
+
+    <div class="modal--review container sign-in mt-5" data-controller="demo1">
+    <div class="modal" data-demo1-target="modal" data-controller="modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="fw-semibold fs-1">Cook</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-action="click->modal#close" ></button>
+          </div>
+          <div class="modal-body">
+          <% index = 0 %>
+          <h4 data-modalcooking-target="index">Step <%=index + 1 %> </h4>
+          <%= @recipe.steps.split('--')[index] %>
+
+          </div>
+          <div class="modal-footer">
+            <button data-controller="modalcooking" data-action="click->modalcooking#previous" class="btn btn-secondary">Previous</button>
+            <button data-controller="modalcooking" data-action="click->modalcooking#next" class="btn btn-secondary">Next</button>
+            <button data-action="click->modal#close" class="btn btn-secondary">Close</button>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container-fluid">
       <h2 class="header bold text-gray1 text-center mt-3"><%= @recipe.name %></h2>
-      <button type="button" class="btn btn-primary btn-lg btn-block">Start cooking</button>
+      <button type="button" class="btn btn-primary btn-lg btn-block" data-action= 'demo1#launchDemo' >Start cooking</button>
     </div>
     <%= button_to 'Leave a review',  '#', class:"btn btn-primary mb-3", :data => {  :action => 'demo#launchDemo' } %>
     <%# link_to "Profile", profile_path(@profile.id, param1: 'value1', param2: 'value2'), method: :post %>
