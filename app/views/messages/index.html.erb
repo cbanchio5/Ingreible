@@ -38,7 +38,7 @@
 
             </p>
               <% if policy(message).destroy? %>
-                <%= link_to  message_path(message), class:"btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <%= link_to  message_path(message), class:"danger-text mx-2", method: :delete, remote: true, data: { confirm: 'Are you sure?' } do %>
                   <i class="fas fa-trash-alt"></i>
                 <% end %>
               <% end %>
@@ -59,7 +59,7 @@
   </div>
   <div class="form-actions">
     <%= f.button :submit, "Subit message", class: "btn btn-primary mb-3" %>
-    <%= link_to "Leave Community", community_membership_path(current_user.id, @membership.id), class:"btn btn-danger mb-3 ", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to "Leave Community", community_membership_path(current_user.id, @membership.id), class:"btn btn-danger mb-3 ", method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
   <% end %>
   </div>
 </div>

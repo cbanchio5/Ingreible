@@ -18,12 +18,12 @@
     </div>
   </div>
   <div class="row flex-row flex-nowrap overflow-scroll hide-scrollbar">
-    <% @recipes.first(6).each do |recipe| %>
+    <% @recipes.sample(6).each do |recipe| %>
       <div class="col-6 col-sm-4 ">
         <div class="card-slider relative w-full">
           <%= link_to recipe, class: "text-decoration-none" do %>
             <div class="relative">
-              <%= cl_image_tag recipe.photo.key, class: "img-cover" %>
+              <%= cl_image_tag recipe.photo.key, class: "img-cover gradient--image" %>
               <div class="absolute top-0 justify-content-end z-20 d-flex w-full smaller pt-2 pe-2">
                 <div class="badge_rating d-flex text-black">
                   <%= image_tag "icon/rating-star.svg" %> <%= recipe.reviews.average(:rating).to_f.round(2)  %>
@@ -51,16 +51,16 @@
 <div class="container-fluid mt-4">
   <h2 class="normal bold text-black">5 Broccoli recipes to make this week </h2>
   <div class="row flex-row flex-nowrap overflow-scroll hide-scrollbar">
-    <% @recipes.first(5).each do |recipe| %>
+    <% @recipes.sample(5).each do |recipe| %>
       <div class="col-12 ">
-        <div class="card-slider relative w-full">
+        <div class="card-slider relative adaptable--size">
           <%= link_to recipe, class: "text-decoration-none" do %>
 
-            <div class="relative">
-              <%= cl_image_tag recipe.photo.key, class: "img-cover" %>
+            <div class="relative ">
+              <%= cl_image_tag recipe.photo.key, class: "img-cover gradient--image" %>
               <div class="absolute top-0 justify-content-end z-20 d-flex w-full smaller pt-2 pe-2">
                 <div class="badge_rating d-flex text-black">
-                  <%= image_tag "icon/rating-star.svg" %>3.5
+                  <%= image_tag "icon/rating-star.svg" %><%= recipe.reviews.average(:rating).to_f.round(2)  %>
                 </div>
               </div>
             </div>
@@ -86,11 +86,11 @@
   <h2 class="normal bold text-black">Communities for you</h2>
   <div class="row flex-row flex-nowrap overflow-scroll hide-scrollbar">
      <% @communities.first(5).each do |community|  %>
-      <div class="col-6 col-sm-4 ">
-        <div class="card-slider relative w-full">
-        <%= cl_image_tag community.photo.key, class: "img-cover" %>
+      <div class="col-6 col-sm-4 col-lg-3 community--slider">
+        <div class="card-slider relative w-full community--slider mb-3">
+        <%= cl_image_tag community.photo.key, class: "img-cover gradient--image" %>
           <%= link_to community, class: "text-decoration-none" do %>
-            <div class="small bold text-gray1 text-center mt-3"><%= community.name%></div>
+            <div class="small bold text-gray1 text-center bg-color-primary2 text-white"><%= community.name%></div>
           <%end%>
         </div>
       </div>
