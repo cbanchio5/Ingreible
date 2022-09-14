@@ -87,6 +87,9 @@
   object-position: 50% 50%;
 }
 
+.img-300 {
+  height:300px;
+}
 .img-fill {
   object-fit: fill;
 }
@@ -97,6 +100,10 @@
 
 .gradient--image {
   background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+}
+
+.gradient--image-primary {
+  background-image: linear-gradient(rgba(113,177,161,1), rgba(246,250,249,0.8));
 }
 
 .adaptable--size{
@@ -128,6 +135,9 @@
   }
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+  .img-300 {
+    height:500px;
   }
 
   /* Hide scrollbar for IE, Edge and Firefox */
