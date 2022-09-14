@@ -6,8 +6,8 @@
     </div>
   </div>
   <div class="container">
-    <h3 class="text-black ">Leave a comment</h3>
-    <div class="comment--section">
+    <h3 class="text-black mt-3">Comments</h3>
+    <div class="comment--section bg-color-primary5">
 
 
 
@@ -21,8 +21,12 @@
             <% end %>
             <div class="comment-info">
               <%# <img  class="mr-2 rounded" style="width: 32px; height: 32px;" src="https://cdn-icons-png.flaticon.com/512/190/190673.png?w=360"> %>
-                <% if ((message.created_at - DateTime.now)/(60*60*24)).abs.to_f.ceil < 4 %>
+
+               <% if (((message.created_at - DateTime.now)/(60*60*24)).abs.to_f.ceil) == 1 %>
+                  <p><%= message.user.fullname%>  <%= ((message.created_at - DateTime.now)/(60*60)).abs.to_i%> hours ago </p>
+                <% elsif ((message.created_at - DateTime.now)/(60*60*24)).abs.to_f.ceil < 4  %>
                   <p><%= message.user.fullname%>  <%= ((message.created_at - DateTime.now)/(60*60*24)).abs.to_i%> days ago </p>
+
                 <% else %>
                   <p><%= message.user.fullname%>  <%= message.created_at.strftime("%d/%m/%Y") %></p>
                 <% end %>
@@ -51,15 +55,16 @@
 
       </div>
 
-
-  <%= simple_form_for [@community, @message] do |f| %>
-  <div class="form-inputs">
-    <%= f.input :message, label: 'Insert your message', input_html: { class: "gray-border-rounded"},
-    :label_html => { :class => 'fs-6' } %>
-  </div>
-  <div class="form-actions">
-    <%= f.button :submit, "Subit message", class: "btn btn-primary mb-3" %>
-    <%= link_to "Leave Community", community_membership_path(current_user.id, @membership.id), class:"btn btn-danger mb-3 ", method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
-  <% end %>
+ <div class="message-form m-4">
+      <%= simple_form_for [@community, @message] do |f| %>
+      <div class="form-inputs">
+        <%= f.input :message, label: 'Insert your message', input_html: { class: "gray-border-rounded"},
+        :label_html => { :class => 'fs-6 text-black' } %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Subit message", class: "btn btn-primary mb-3" %>
+        <%= link_to "Leave Community", community_membership_path(current_user.id, @membership.id), class:"btn btn-danger mb-3 ", method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+      </div>
   </div>
 </div>
