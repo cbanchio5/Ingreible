@@ -31,10 +31,10 @@
   flex-direction: column;
   width: clamp(20rem, calc(20rem + 2vw), 22rem);
   overflow: hidden;
-  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.3);
   border-radius: 1em;
-  background: $white;
-  background: linear-gradient(to right, $gray3, $gray4);
+  background: $primary3;
+  background: linear-gradient(to right, $primary3, $gray4);
 
 }
 

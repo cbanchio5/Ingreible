@@ -60,9 +60,19 @@
 .text-gray3 {
   color: $gray3;
 }
+.text-white {
+  color: $white;
+}
 // BG COLOR
 .bg-color-primary5 {
   background-color: $primary5;
+}
+
+.bg-color-primary2 {
+  background-color: $primary2;
+}
+.bg-color-primary3 {
+  background-color: $primary3;
 }
 
 //ERROR TEXT COLOR
@@ -77,9 +87,23 @@
   object-position: 50% 50%;
 }
 
+.img-fill {
+  object-fit: fill;
+}
+
 .aspect-landscape {
   aspect-ratio: 4/3;
 }
+
+.gradient--image {
+  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+}
+
+.adaptable--size{
+  width:100%;
+}
+
+
 
 @keyframes disappearAnimation{
   0%{
@@ -96,3 +120,20 @@
 
   }
 }
+
+@media screen and (min-width: 800px) {
+  // this css will only be used when the screen size is min 800px
+  .adaptable--size {
+    width:50%;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  }

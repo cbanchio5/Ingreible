@@ -29,3 +29,13 @@
   display:flex;
   justify-content: flex-start;
 }
+
+
+@media screen and (min-width: 800px) {
+  // this css will only be used when the screen size is min 800px
+
+.message-form {
+  width:50%;
+}
+
+  }

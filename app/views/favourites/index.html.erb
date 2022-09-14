@@ -1,6 +1,25 @@
-<h1>here are your favouritrs</h1>
-<% @favourites.each do |favourite| %>
-<p style="color:black"> FAV ID IS <%= favourite.id %>  user id is <%= favourite.user_id %> recipe id is <%= favourite.recipe_id %></p>
-<%= link_to 'Delete this recipe', user_favourite_path(current_user.id, favourite.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-lg btn-danger" %>
 
-<% end %>
+<div class="container">
+  <h1 class="text-black">Favorites</h1>
+      <div class="container--favorite my-4">
+        <% @favourites.each do |favorite| %>
+
+              <div class="card--favorite m-3" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('<%= cl_image_path favorite.recipe.photo.key, height: 300 %>')">
+                        <div class="badge_rating d-flex text-black m-2">
+                          <%= image_tag "icon/rating-star.svg" %> <%= favorite.recipe.reviews.average(:rating).to_f.round(2)  %>
+                        </div>
+                        <div class="card--favorite--data">
+                          <%= link_to user_favourite_path(current_user.id, favorite.id), method: :delete, data: { confirm: 'Are you sure?' } do%>
+                            <%= image_tag "icon/bookmark.svg", class: "icon" %>
+                          <% end %>
+                          <h3 class="text-white favorite--title m-3"><%= favorite.recipe.name  %></h3>
+                          <p class="m-3"><i class="fas fa-clock"></i> <%= favorite.recipe.time  %></p>
+                        </div>
+
+              </div>
+
+
+              <% end %>
+       </div>
+
+</div>
