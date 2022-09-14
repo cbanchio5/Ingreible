@@ -2,8 +2,20 @@ import { Controller } from "stimulus";
 
 export default class extends Controller {
 
-  static target = ["index"];
+  static targets = ["index", "content", "previous", "next"]
     initialize() {
+      let step = this.indexTarget.innerText
+      step = step.replace(/\D/g, '') * 1
+      console.log(this.contentTarget.querySelectorAll('.step')[step -1])
+      this.contentTarget.querySelectorAll('.step')[step -1].classList.remove('inactive--div')
+      console.log(this.contentTarget.querySelectorAll('.step')[step -1])
+      // if (step === 1) {
+      //   this.previousTarget.setAttribute("disabled", "")
+      //   this.contentTarget.querySelectorAll('p')[step -1].classList.remove('inactive--div')
+
+      // } else {
+      //   this.previousTarget.removeAttribute('disbaled')
+      // }
 
     }
 
@@ -23,11 +35,18 @@ export default class extends Controller {
 
   next() {
 
-    console.log("NEXT")
+
+    let step = this.indexTarget.innerText
+    let step_number = step.replace(/\D/g, '') * 1
+    let next_step = step_number + 1
+    step = step.replace("1", next_step)
+    this.indexTarget.innerText = step
+
+
 
   }
 
-  prevous() {
+  previous() {
     console.log("PREVIOUS")
   }
 }
