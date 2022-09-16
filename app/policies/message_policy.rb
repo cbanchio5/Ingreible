@@ -5,7 +5,8 @@ class MessagePolicy < ApplicationPolicy
     #   scope.all
     # end
     def resolve
-      if user.communities.include?(scope.all.first.community)
+      ##This fixes the issue,
+      unless scope.all.one? {|element| element.user_id == user.id}
        scope.all
       else
         raise Pundit::NotAuthorizedError, 'Not allowed to view this action'

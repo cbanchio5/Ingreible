@@ -62,9 +62,15 @@
           :label_html => { :class => 'fs-6 text-black' } %>
         </div>
         <div class="form-actions">
-          <%= f.button :submit, "Subit message", class: "btn btn-primary mb-3" %>
+         <%= button_tag type: 'submit', class: "btn btn-primary mb-3", method: :post do %>
+            <i class="fas fa-share"></i>
+          <% end %>
+          <%# <%= f.button :submit, "", class: "btn btn-primary mb-3"%>
           <%= link_to "Leave Community", community_membership_path(current_user.id, @membership.id), class:"btn btn-danger mb-3 ", method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+
+
         <% end %>
+
         </div>
     </div>
   </div>

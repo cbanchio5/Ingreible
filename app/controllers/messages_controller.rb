@@ -4,10 +4,11 @@ class MessagesController < ApplicationController
 
   def index
     # authorize @community
+    @membership = Membership.find_by(user_id: current_user.id, community_id: @community.id)
     @messages = policy_scope(Message).where(community_id: @community.id)
     @message = Message.new
     # @memberships = policy_scope(Membership).where(current_user.id)
-    @membership = Membership.find_by(user_id: current_user.id, community_id: @community.id)
+
 
   end
 

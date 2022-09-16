@@ -44,7 +44,7 @@
     <% end %>
   </ul>
 </div>
-
+<%# ###REVIEW MODAL %>
 <div class="container">
   <%= link_to 'Add to favourites',  recipe_favourites_path(@recipe), method: :post, class:"btn-primary" %>
   <div class="modal--review container sign-in mt-5" data-controller="demo">
@@ -57,8 +57,8 @@
           </div>
           <div class="modal-body">
             <%= simple_form_for [ @recipe, @review ] do |f| %>
-              <%= f.input :content %>
-              <%= f.input :rating %>
+              <%= f.input :content, input_html: { class: "gray-border-rounded"} %>
+              <%= f.input :rating, input_html: { class: "gray-border-rounded"} %>
               <%= f.submit "Submit review", class: "btn btn-primary w-100" %>
             <% end %>
           </div>
