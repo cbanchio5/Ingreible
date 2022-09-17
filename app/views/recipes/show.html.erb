@@ -47,8 +47,6 @@
 
 
 
-<div class="container">
-  <%= link_to 'Add to favourites',  recipe_favourites_path(@recipe), method: :post, class:"btn-primary" %>
 
   <%# ###REVIEW MODAL %>
   <div class="modal--review container sign-in mt-5" data-controller="demo">
@@ -110,14 +108,47 @@
 
     <%# END OF COOKING MODAL %>
 
+    <%# CTA BUTTONS %>
+
     <div class="container-fluid">
-      <h2 class="header bold text-gray1 text-center mt-3"><%= @recipe.name %></h2>
-      <button type="button" class="btn btn-primary btn-lg btn-block" data-action= 'demo1#launchDemo' >Start cooking</button>
+      <div class="action--buttons">
+        <button type="button" class="btn btn-primary m-3 " data-action= 'demo1#launchDemo' >Start Cooking!</button>
+        <%= button_to 'Leave a review',  '#', class:"btn btn-primary m-3 ", :data => {  :action => 'demo#launchDemo' } %>
+      </div>
     </div>
-    <%= button_to 'Leave a review',  '#', class:"btn btn-primary mb-3", :data => {  :action => 'demo#launchDemo' } %>
+
     <%# link_to "Profile", profile_path(@profile.id, param1: 'value1', param2: 'value2'), method: :post %>
   </div>
    <% if policy(@recipe).destroy? %>
     <%= link_to 'Delete this recipe', @recipe, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-lg btn-danger" %>
    <% end %>
+</div>
+
+<%# REVIEWS SECTION %>
+<hr class="text-gray3 w-50 mx-auto d-flex justify-content-center ">
+
+<div class="review--section mx-3 mb-5">
+  <h1 class="text-black">Reviews</h1>
+  <% @recipe.reviews.sample(3).each do |review| %>
+      <div class="comment mt-3">
+        <div class="comment-heading">
+          <% if review.user.photo.attached? %>
+            <%= cl_image_tag review.user.photo.key , class: "mr-2 rounded", 'aria-haspopup': true, 'aria-expanded': false, size: "32x32" %>
+          <% else %>
+            <%= image_tag "https://cdn-icons-png.flaticon.com/512/190/190673.png?w=360", class: "mr-2 rounded", 'aria-haspopup': true, 'aria-expanded': false, size: "32x32" %>
+          <% end %>
+          <div class="comment-info">
+            <p><strong><%= review.user.fullname%> </strong> <%= review.created_at.strftime("%d/%m/%Y") %></p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="comment-body text-black mx-5">
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <%= review.content %>
+        </p>
+      </div>
+  <% end %>
+  <%= link_to 'View more reviews', recipe_reviews_path(@recipe), class:"mt-5" %>
 </div>
