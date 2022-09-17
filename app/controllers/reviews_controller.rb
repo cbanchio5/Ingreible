@@ -29,7 +29,7 @@ class ReviewsController < ApplicationController
 
   def index
     @reviews = policy_scope(Review)
-    @reviews = Review.find_by(recipe_id:params[:recipe_id] )
+    @reviews = Review.where(recipe_id: params[:recipe_id] )
 
   end
 

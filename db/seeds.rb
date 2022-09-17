@@ -38,7 +38,7 @@ puts "Creating Recipes"
 
 # RECIPES CREATION
 
-recipes.slice!(0, 30).each do |recipe|
+recipes.slice!(0, 2).each do |recipe|
   new_recipe = Recipe.new(name: recipe["Name"],
     ingredients: recipe["Ingredients"].join("-- "),
     difficulty: ['easy', 'medium', 'hard'].sample,
@@ -74,9 +74,14 @@ puts "finished with the recipes"
 
 # USERS CREATION
 
-10.times do
+filepath_user = '../images/users/'
+
+10.times do |number|
   user = User.new(fullname: Faker::Name.name, password: "test1234")
   user.email = "#{user.fullname.split(' ').join('')}@test.com"
+  user_file = URI.open("app/assets/images/users/user-#{number + 1}.jpg")
+  user.photo.attach(io:user_file, filename: 'nes.png', content_type: 'image/png')
+
   user.save!
  end
 
