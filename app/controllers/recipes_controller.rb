@@ -8,6 +8,7 @@ class RecipesController < ApplicationController
     @reviews = policy_scope(Review)
     @favourites = policy_scope(Favourite)
     @communities = policy_scope(Community)
+    @search = !params[:query].nil?
   end
 
   # if params[:query].present?
