@@ -25,28 +25,32 @@
 
 
 <div class="container-fluid mt-3">
-  <h2 class="normal bold text-gray1">Ingredients</h2>
+  <h2 class="normal bold text-gray1">Ingredients:</h2>
   <ul class="text-gray2 small ps-0">
-    <% @recipe.ingredients.split(',').each do |ingridient| %>
+    <% @recipe.ingredients.split('--').each do |ingredient| %>
       <div class="ingredient--info d-flex flex-row m-3 bg-color-primary5 p-3">
-        <input  class="mx-3"type="checkbox" aria-label="Checkbox for following text input"> <li class="list-group-item pt-1"> <%= ingridient %></li>
+        <input  class="mx-3"type="checkbox" aria-label="Checkbox for following text input"> <li class="list-group-item pt-1"> <%= ingredient %></li>
       </div>
     <% end %>
   </ul>
 </div>
 
 
-<div class="container-fluid mt-3">
-  <ul class="text-gray2 small ps-0">
-    <% @recipe.steps.split('--').each_with_index do |step, index| %>
-      <h2 class="normal bold text-gray1">Step <%= index + 1 %></h2>
-      <li class="list-group-item pt-1"> <%= step %></li>
-    <% end %>
-  </ul>
-</div>
-<%# ###REVIEW MODAL %>
+<%# <div class="container-fluid mt-3"> %>
+  <%# <ul class="text-gray2 small ps-0"> %>
+    <%# <% @recipe.steps.split('--').each_with_index do |step, index| %>
+      <%# <h2 class="normal bold text-gray1">Step <%= index + 1 %>
+      <%# <li class="list-group-item pt-1"> <%= step %>
+    <%# <% end %>
+  <%# </ul> %>
+<%# </div> %>
+
+
+
 <div class="container">
   <%= link_to 'Add to favourites',  recipe_favourites_path(@recipe), method: :post, class:"btn-primary" %>
+
+  <%# ###REVIEW MODAL %>
   <div class="modal--review container sign-in mt-5" data-controller="demo">
     <div class="modal" data-demo-target="modal" data-controller="modal">
       <div class="modal-dialog">
@@ -69,42 +73,42 @@
       </div>
     </div>
 
+    <%# END OF REVIEW MODAL %>
+
 
     <%# COOKING MODAL %>
 
     <div class="modal--review container sign-in mt-5" data-controller="demo1">
-    <div class="modal" data-demo1-target="modal" data-controller="modal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="fw-semibold fs-1">Cook</h2>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-action="click->modal#close" ></button>
-          </div>
-          <div class="div" data-controller="modalcooking">
-            <% index = 0 %>
+      <div class="modal" data-demo1-target="modal" data-controller="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="fw-semibold fs-1">Cook</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-action="click->modal#close" ></button>
+            </div>
+            <div class="div" data-controller="modalcooking">
+              <% index = 0 %>
             <div class="modal-body" >
-
               <h4 data-modalcooking-target="index" >Step <%=index + 1 %> </h4>
               <div class="step-container" data-modalcooking-target="content">
-
                 <% @recipe.steps.split('--').each do |step| %>
                   <div class="step inactive--div">
                   <p><%=step  %></p>
                   </div>
-                  <% end %>
+                <% end %>
               </div>
             </div>
             <div class="modal-footer">
               <button  data-action="click->modalcooking#previous" class="btn btn-primary text-white" data-modalcooking-target="previous" >Previous</button>
               <button  data-action="click->modalcooking#next" class="btn btn-primary text-white" data-modalcooking-target="next">Next</button>
               <button data-action="click->modal#close" class="btn btn-secondary">Close</button>
-
-
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <%# END OF COOKING MODAL %>
 
     <div class="container-fluid">
       <h2 class="header bold text-gray1 text-center mt-3"><%= @recipe.name %></h2>
