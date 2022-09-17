@@ -1,7 +1,7 @@
 class MembershipsController < ApplicationController
 
   def index
-    @memberships = policy_scope(Membership).where(user_id: current_user)
+    @memberships = policy_scope(Membership).where(user_id: current_user).includes(:community)
   end
 
   def show
