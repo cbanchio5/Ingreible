@@ -72,6 +72,14 @@ end
 
 puts "finished with the recipes"
 
+# USERS CREATION
+
+10.times do
+  user = User.new(fullname: Faker::Name.name, password: "test1234")
+  user.email = "#{user.fullname.split(' ').join('')}@test.com"
+  user.save!
+ end
+
 # COMMUNITIES CREATION
 
 filepath_communities = 'db/communities.json'
@@ -85,15 +93,14 @@ communities.each do |community|
   community_file = URI.open(community["img"])
   new_community.photo.attach(io: community_file, filename: 'nes.png', content_type: 'image/png')
   new_community.save!
+
+  Message.create(community_id: new_community.id, user_id: user1.id, message: "Welcome to #{new_community.name} Community!")
 end
 
-# USERS CREATION
 
-10.times do
-  user = User.new(fullname: Faker::Name.name, password: "test1234")
-  user.email = "#{user.fullname.split(' ').join('')}@test.com"
-  user.save!
- end
+##MESSAGES CREATION
+
+
 
 #  REVIEWS CREATION
 
