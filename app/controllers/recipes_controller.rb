@@ -10,6 +10,7 @@ class RecipesController < ApplicationController
     @communities = policy_scope(Community)
     @vegetables = ["eggs", "pepper", "almond"].sample
     @recipes2 = Recipe.search_by_name_and_ingredients(@vegetables)
+    @search = !params[:query].nil?
   end
 
   # if params[:query].present?
