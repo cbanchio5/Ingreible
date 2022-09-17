@@ -28,7 +28,7 @@ def create
   @favourite.user_id = current_user.id
   #relationship does not exist
  if  @favourite.save
-  flash[:notice] = "Saved succesfully"
+  redirect_to recipes_path
   #redirect_to user_favourites_path(current_user.id)
  else
   flash[:notice] = "Error"
@@ -41,7 +41,7 @@ def destroy
   authorize @favourite
   #raise
   @favourite.destroy
-  redirect_to user_favourites_path(current_user.id)
+  redirect_to recipes_path
 end
 
 end
