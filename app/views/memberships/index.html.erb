@@ -2,12 +2,21 @@
 <div class="container">
   <h1 class="text-black">My Memberships</h1>
       <div class="container--favorite my-4">
+      <% if @memberships.length === 0 %>
+        <h3>You have not joined any community yet, what are you waiting for?</h3>
+      <% else %>
         <% @memberships.each do |membership| %>
-          <div class="card--favorite m-3" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('<%= cl_image_path membership.community.photo.key, height: 300 %>')">
-            <div class="card--favorite--data">
-              <h3 class="text-white favorite--title m-3"><%= membership.community.name  %></h3>
+          <%= link_to  community_messages_path(membership.community.id),  class: "text-decoration-none" do%>
+            <div class="card--favorite m-3" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('<%= cl_image_path membership.community.photo.key, height: 300 %>')">
+              <div class="card--favorite--data">
+                <h3 class="text-white favorite--title m-3"><%= membership.community.name  %></h3>
               </div>
-          </div>
-       <% end %>
+              <%= link_to  user_membership_path(current_user.id, membership.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn" do%>
+                <i class="fas fa-times-octagon"></i>
+              <%end  %>
+            </div>
+          <% end %>
+        <% end %>
+        <% end %>
       </div>
 </div>
