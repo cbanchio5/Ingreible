@@ -36,14 +36,14 @@
 </div>
 
 
-<div class="container-fluid mt-3">
-  <ul class="text-gray2 small ps-0">
-    <% @recipe.steps.split('--').each_with_index do |step, index| %>
-      <h2 class="normal bold text-gray1">Step <%= index + 1 %></h2>
-      <li class="list-group-item pt-1"> <%= step %></li>
-    <% end %>
-  </ul>
-</div>
+<%# <div class="container-fluid mt-3"> %>
+  <%# <ul class="text-gray2 small ps-0"> %>
+    <%# <% @recipe.steps.split('--').each_with_index do |step, index| %>
+      <%# <h2 class="normal bold text-gray1">Step <%= index + 1 %>
+      <%# <li class="list-group-item pt-1"> <%= step %>
+    <%# <% end %>
+  <%# </ul> %>
+<%# </div> %>
 <%# ###REVIEW MODAL %>
 <div class="container">
   <%= link_to 'Add to favourites',  recipe_favourites_path(@recipe), method: :post, class:"btn-primary" %>
