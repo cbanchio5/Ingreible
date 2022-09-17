@@ -11,9 +11,6 @@
               <div class="card--favorite--data">
                 <h3 class="text-white favorite--title m-3"><%= membership.community.name  %></h3>
               </div>
-              <%= link_to  user_membership_path(current_user.id, membership.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn" do%>
-                <i class="fas fa-times-octagon"></i>
-              <%end  %>
             </div>
           <% end %>
         <% end %>
