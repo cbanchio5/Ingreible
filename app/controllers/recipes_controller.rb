@@ -8,6 +8,8 @@ class RecipesController < ApplicationController
     @reviews = policy_scope(Review)
     @favourites = policy_scope(Favourite)
     @communities = policy_scope(Community)
+    @vegetables = ["eggs", "pepper", "almond"].sample
+    @recipes2 = Recipe.search_by_name_and_ingredients(@vegetables)
   end
 
   # if params[:query].present?

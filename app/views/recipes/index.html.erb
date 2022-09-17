@@ -62,9 +62,10 @@
 </div>
 </div>
 <div class="container-fluid mt-4">
-  <h2 class="normal bold text-black">5 Broccoli recipes to make this week </h2>
+<%  %>
+  <h2 class="normal bold text-black">5 <%=@vegetables.capitalize %> recipes to make this week </h2>
   <div class="row flex-row flex-nowrap overflow-scroll hide-scrollbar">
-    <% @recipes.sample(5).each do |recipe| %>
+    <% @recipes2.sample(5).each do |recipe| %>
       <div class="col-12 ">
         <div class="card-slider relative adaptable--size">
           <%= link_to recipe, class: "text-decoration-none" do %>
