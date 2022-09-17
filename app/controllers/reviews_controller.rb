@@ -27,6 +27,12 @@ class ReviewsController < ApplicationController
 
   end
 
+  def index
+    @reviews = policy_scope(Review)
+    @reviews = Review.find_by(recipe_id:params[:recipe_id] )
+
+  end
+
   private
 
   def review_params
