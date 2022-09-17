@@ -16,6 +16,7 @@
       <% end %>
     </div>
   </div>
+
   <!-- END SEARCH BAR -->
   <!-- INDEX SEARCH RESULTS -->
   <% if @search %>
@@ -34,9 +35,11 @@
                   <div class="badge_rating d-flex text-black">
                     <%= image_tag "icon/rating-star.svg" %> <%= recipe.reviews.average(:rating).to_f.round(2)  %>
                   </div>
+
                 </div>
                 <!-- rating badge container end -->
               </div>
+
               <!-- image+rating container end -->
               <!-- info -->
               <div class="small bold text-gray1 text-center mt-3"><%= recipe.name%></div>
@@ -59,6 +62,7 @@
                     <%= link_to recipe_favourites_path(recipe), class: "icon_button", remote: true, method: :post do %>
                       <%= image_tag "icon/bookmark.svg", class: "icon" %>
                     <% end %>
+
                   <% end %>
                 </div>
                 <!-- bookmark toggle end -->
@@ -126,6 +130,7 @@
           </div>
         <%end%>
       </div>
+
       <!-- END CAROUSEL CARDS -->
       <!-- RECIPES RECOMMENDATIONS -->
       <h2 class="normal bold text-black">5 Broccoli recipes to make this week </h2>
@@ -141,6 +146,7 @@
                       <%= image_tag "icon/rating-star.svg" %><%= recipe.reviews.average(:rating).to_f.round(2)  %>
                     </div>
                   </div>
+
                 </div>
                 <div class="small bold text-gray1 text-center mt-3"><%= recipe.name%></div>
                 <div class=" d-flex justify-content-between align-items-center mt-3 pb-3 px-2">
