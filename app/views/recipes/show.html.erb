@@ -27,9 +27,9 @@
 <div class="container-fluid mt-3">
   <h2 class="normal bold text-gray1">Ingredients</h2>
   <ul class="text-gray2 small ps-0">
-    <% @recipe.ingredients.split(',').each do |ingridient| %>
+    <% @recipe.ingredients.split('--').each do |ingredient| %>
       <div class="ingredient--info d-flex flex-row m-3 bg-color-primary5 p-3">
-        <input  class="mx-3"type="checkbox" aria-label="Checkbox for following text input"> <li class="list-group-item pt-1"> <%= ingridient %></li>
+        <input  class="mx-3"type="checkbox" aria-label="Checkbox for following text input"> <li class="list-group-item pt-1"> <%= ingredient %></li>
       </div>
     <% end %>
   </ul>

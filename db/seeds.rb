@@ -10,6 +10,9 @@ require "open-uri"
 require "nokogiri"
 require 'faker'
 
+Message.delete_all
+Membership.delete_all
+Favourite.delete_all
 Review.delete_all
 Recipe.delete_all
 User.delete_all
@@ -37,7 +40,7 @@ puts "Creating Recipes"
 
 recipes.slice!(0, 30).each do |recipe|
   new_recipe = Recipe.new(name: recipe["Name"],
-    ingredients: recipe["Ingredients"].join(", "),
+    ingredients: recipe["Ingredients"].join("-- "),
     difficulty: ['easy', 'medium', 'hard'].sample,
     time: (1..10).to_a.sample,
     steps: recipe["Method"].join('--'),
