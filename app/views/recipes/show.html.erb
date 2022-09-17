@@ -109,10 +109,12 @@
     <%# END OF COOKING MODAL %>
 
     <div class="container-fluid">
-      <h2 class="header bold text-gray1 text-center mt-3"><%= @recipe.name %></h2>
-      <button type="button" class="btn btn-primary btn-lg btn-block" data-action= 'demo1#launchDemo' >Start cooking</button>
+      <div class="action--buttons">
+        <button type="button" class="btn btn-primary m-3 " data-action= 'demo1#launchDemo' >Start Cooking!</button>
+        <%= button_to 'Leave a review',  '#', class:"btn btn-primary m-3 ", :data => {  :action => 'demo#launchDemo' } %>
+      </div>
     </div>
-    <%= button_to 'Leave a review',  '#', class:"btn btn-primary mb-3", :data => {  :action => 'demo#launchDemo' } %>
+
     <%# link_to "Profile", profile_path(@profile.id, param1: 'value1', param2: 'value2'), method: :post %>
   </div>
    <% if policy(@recipe).destroy? %>
