@@ -1,43 +1,36 @@
 <div class="message-container-fluid bg-color-primary5">
-
-    <div class="blog--header" style="background-image: linear-gradient(rgba(18,149,117, 01), rgba(250,250,250,0.3)), url('<%= cl_image_path @community.photo.key, height: 500, crop: :fill %>')">
-      <div class="header--text">
-        <h1 class="text-black title--header"><%=@community.name  %></h1>
-      </div>
-    </div>
-    <div class="container">
-      <h3 class="text-black mt-3">Comments</h3>
-      <div class="comment--section bg-color-primary5">
-
-
-        <%= render partial: "show_welcome", locals: { message: @messages.first } %>
-        <% @messages.slice(1..).each do |message| %>
-         <%= render partial: "show", locals: { message: message } %>
-        <% end %>
-      </div>
-          </div>
-
-              </div>
-
-        </div>
-
-  <div class="message-form m-4 ">
-        <%= simple_form_for [@community, @message] do |f| %>
-        <div class="form-inputs">
-          <%= f.input :message, label: 'Insert your message', input_html: { class: "gray-border-rounded"},
-          :label_html => { :class => 'fs-6 text-black' } %>
-        </div>
-        <div class="form-actions">
-         <%= button_tag type: 'submit', class: "btn btn-primary mb-3", method: :post do %>
-            <i class="fas fa-share"></i>
-          <% end %>
-          <%# <%= f.button :submit, "", class: "btn btn-primary mb-3"%>
-          <%= link_to "Leave Community", community_membership_path(current_user.id, @membership.id), class:"btn btn-danger mb-3 ", method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
-
-
-        <% end %>
-
-        </div>
+  <div class="blog--header" style="background-image: linear-gradient(rgba(18,149,117, 01), rgba(250,250,250,0.3)), url('<%= cl_image_path @community.photo.key, height: 500, crop: :fill %>')">
+    <div class="header--text">
+      <h1 class="text-black title--header"><%=@community.name  %></h1>
     </div>
   </div>
+  <div class="container">
+    <h3 class="text-black mt-3">Comments</h3>
+    <div class="comment--section bg-color-primary5">
+      <%= render partial: "show_welcome", locals: { message: @messages.first } %>
+      <% @messages.slice(1..).each do |message| %>
+      <%= render partial: "show", locals: { message: message } %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%# ##MESAGE FORM %>
+
+<div class="message-form m-4 ">
+  <%= simple_form_for [@community, @message] do |f| %>
+    <div class="form-inputs">
+      <%= f.input :message, label: 'Insert your message', input_html: { class: "gray-border-rounded"},
+      :label_html => { :class => 'fs-6 text-black' } %>
+      <%= button_tag type: 'submit', class: "btn btn-primary mb-3", method: :post do %>
+        <i class="fas fa-share"></i>
+      <% end %>
+    </div>
+    <div class="form-actions">
+      <%= link_to  community_membership_path(current_user.id, @membership.id), class:"btn btn-danger mb-3 ", method: :delete, remote: true, data: { confirm: 'Are you sure?' } do%>
+        <i class="fas fa-portal-exit"></i>
+      <%end %>
+    </div>
+  <% end %>
+
 </div>
