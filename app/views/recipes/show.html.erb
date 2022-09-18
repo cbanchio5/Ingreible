@@ -1,7 +1,7 @@
 <div class="col-12">
-  <div class="relative">
+  <div class="relative image--header">
     <%= cl_image_tag @recipe.photo.key, class: "img-cover img-300 gradient--image-primary" %>
-    <div class="absolute top-0 justify-content-end z-20 d-flex w-full smaller pt-2 pe-2">
+    <div class="absolute top-0 justify-content-end z-20 d-flex w-full smaller pt-2 pe-2 banner-star">
       <div class="badge_rating d-flex text-black">
         <%= image_tag "icon/rating-star.svg" %><%= @recipe.reviews.average(:rating).to_f.round(2)  %>
       </div>
@@ -61,6 +61,9 @@
             <%= simple_form_for [ @recipe, @review ] do |f| %>
               <%= f.input :content, input_html: { class: "gray-border-rounded"} %>
               <%= f.input :rating, input_html: { class: "gray-border-rounded"} %>
+              <% if flash[:messages] %>
+2              <h2><%= flash[:messages] %></h2>
+3             <% end %>
               <%= f.submit "Submit review", class: "btn btn-primary w-100" %>
             <% end %>
           </div>
@@ -99,7 +102,7 @@
             <div class="modal-footer">
               <button  data-action="click->modalcooking#previous" class="btn btn-primary text-white" data-modalcooking-target="previous" >Previous</button>
               <button  data-action="click->modalcooking#next" class="btn btn-primary text-white" data-modalcooking-target="next">Next</button>
-              <button data-action="click->modal#close" class="btn btn-secondary">Close</button>
+              <%# <button data-action="click->modal#close" class="btn btn-secondary">Close</button> %>
             </div>
           </div>
         </div>
@@ -120,7 +123,9 @@
     <%# link_to "Profile", profile_path(@profile.id, param1: 'value1', param2: 'value2'), method: :post %>
   </div>
    <% if policy(@recipe).destroy? %>
-    <%= link_to 'Delete this recipe', @recipe, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-lg btn-danger" %>
+    <%= link_to  @recipe, method: :delete, data: { confirm: 'Are you sure?' }, class:"text-danger" do%>
+      <i class="fas fa-trash"></i>
+    <% end %>
    <% end %>
 </div>
 

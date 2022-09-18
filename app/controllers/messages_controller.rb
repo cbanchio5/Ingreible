@@ -34,7 +34,7 @@ class MessagesController < ApplicationController
     @message.community_id = @community.id
     authorize @message
     @message.save!
-    redirect_to community_messages_path(@community)
+    redirect_to community_messages_path(@community, anchor:"message-id--#{@message.id}")
   end
 
   def destroy

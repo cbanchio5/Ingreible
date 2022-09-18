@@ -1,7 +1,6 @@
 <div class="container-fluid mt-4">
   <!-- SEARCH BAR -->
   <div class="search--bar--container mb-3">
-
     <div class="search--bar">
       <%= form_tag recipes_path, method: :get, :class => 'd-flex justify-content-start' do %>
         <%= text_field_tag :query,
@@ -16,11 +15,13 @@
       <% end %>
     </div>
   </div>
-
-
   <!-- END SEARCH BAR -->
   <!-- INDEX SEARCH RESULTS -->
   <% if @search %>
+    <%# RESULT COUNT HEADER %>
+    <div class="header--result">
+      <h3 class="text-black"><%= @recipes.length  %> results...</h3>
+    </div>
     <!--  CARDS LIST  -->
     <ul div class="m-0 p-0 grid">
       <% @recipes.each do |recipe| %>
@@ -45,7 +46,6 @@
                 </div>
                 <!-- rating badge container end -->
               </div>
-
               <!-- image+rating container end -->
               <!-- info -->
               <div class="small bold text-gray1 text-center mt-3"><%= recipe.name%></div>
@@ -149,17 +149,9 @@
                 <div class="relative ">
                   <%= cl_image_tag recipe.photo.key, class: "img-cover gradient--image" %>
                   <div class="absolute top-0 justify-content-end z-20 d-flex w-full smaller pt-2 pe-2">
-                    <% rating = recipe.reviews.average(:rating).to_f.round(2) %>
-                    <% if rating === 0 %>
-                      <div class="badge_rating d-flex text-black inactive--div">
-                        <%= image_tag "icon/rating-star.svg" %> <%= recipe.reviews.average(:rating).to_f.round(2)  %>
-                    <% else %>
                       <div class="badge_rating d-flex text-black">
                       <%= image_tag "icon/rating-star.svg" %> <%= recipe.reviews.average(:rating).to_f.round(2)  %>
-                    <% end %>
                   </div>
-
-
                 </div>
                 <div class="small bold text-gray1 text-center mt-3"><%= recipe.name%></div>
                 <div class=" d-flex justify-content-between align-items-center mt-3 pb-3 px-2">
@@ -183,7 +175,7 @@
         <div class="row flex-row flex-nowrap overflow-scroll hide-scrollbar">
           <% @communities.first(5).each do |community|  %>
             <div class="col-6 col-sm-4 col-lg-3 community--slider">
-              <div class="card-slider relative w-full community--slider mb-3">
+              <div class="card-slider relative w-full community--slider mb-3 community-index-card">
                 <%= cl_image_tag community.photo.key, class: "img-cover gradient--image" %>
                 <%= link_to community, class: "text-decoration-none" do %>
                   <div class="small bold text-gray1 text-center bg-color-primary2 text-white"><%= community.name%></div>

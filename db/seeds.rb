@@ -42,7 +42,6 @@ recipes.slice!(0, 30).each do |recipe|
   new_recipe = Recipe.new(name: recipe["Name"],
     ingredients: recipe["Ingredients"].join("-- "),
     difficulty: ['easy', 'medium', 'hard'].sample,
-    time: (1..10).to_a.sample,
     steps: recipe["Method"].join('--'),
     serves: 2,
     category: "To be confirmed",
@@ -60,6 +59,10 @@ recipes.slice!(0, 30).each do |recipe|
   puts "adding the cooking time"
   html_doc.search('span').each do |element|
     if element.text === "Cook:"
+      new_recipe.time = element.next_element.text
+    elsif element.text.include?("Total time")
+      new_recipe.time = element.next_element.text
+    elsif element.text.include?("Prep")
       new_recipe.time = element.next_element.text
     end
   end
@@ -117,6 +120,16 @@ filepath_reviews = 'db/reviews.json'
 serialized_data_reviews = File.read(filepath_reviews)
 
 reviews = JSON.parse(serialized_data_reviews)
+
+reviews.each do |review|
+  new_review = Review.new(content: review["review"], rating: (1..5).to_a.sample, user: User.order("RANDOM()").first, recipe:Recipe.order("RANDOM()").first)
+  new_review.save!
+end
+
+reviews.each do |review|
+  new_review = Review.new(content: review["review"], rating: (1..5).to_a.sample, user: User.order("RANDOM()").first, recipe:Recipe.order("RANDOM()").first)
+  new_review.save!
+end
 
 reviews.each do |review|
   new_review = Review.new(content: review["review"], rating: (1..5).to_a.sample, user: User.order("RANDOM()").first, recipe:Recipe.order("RANDOM()").first)
