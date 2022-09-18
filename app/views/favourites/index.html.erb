@@ -35,7 +35,9 @@
                 </div>
               </div>
               <div class="card--favorite--data">
-                <h3 class="text-white favorite--title m-3"><%= favorite.recipe.name  %></h3>
+                <%= link_to recipe_path(favorite.recipe), class:"text-decoration-none" do%>
+                  <h3 class="text-white favorite--title m-3"><%= favorite.recipe.name  %></h3>
+                <% end %>
                 <p class="m-3"><i class="fas fa-clock"></i> <%= favorite.recipe.time  %></p>
               </div>
             </div>
