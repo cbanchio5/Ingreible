@@ -61,6 +61,9 @@
             <%= simple_form_for [ @recipe, @review ] do |f| %>
               <%= f.input :content, input_html: { class: "gray-border-rounded"} %>
               <%= f.input :rating, input_html: { class: "gray-border-rounded"} %>
+              <% if flash[:messages] %>
+2              <h2><%= flash[:messages] %></h2>
+3             <% end %>
               <%= f.submit "Submit review", class: "btn btn-primary w-100" %>
             <% end %>
           </div>

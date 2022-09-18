@@ -22,8 +22,11 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id
     @review.recipe_id = @recipe.id
     @review.recipe = @recipe
-    @review.save
-    redirect_to recipe_path(@recipe)
+    if @review.save
+      redirect_to recipe_path(@recipe)
+    else
+      render :new
+    end
 
   end
 
