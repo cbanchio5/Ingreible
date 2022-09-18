@@ -19,10 +19,10 @@
 
 <div class="message-form m-4 ">
   <%= simple_form_for [@community, @message] do |f| %>
-    <div class="form-inputs">
+    <div class="d-flex flex-row">
       <%= f.input :message, label: 'Insert your message', input_html: { class: "gray-border-rounded"},
       :label_html => { :class => 'fs-6 text-black' } %>
-      <%= button_tag type: 'submit', class: "btn btn-primary mb-3", method: :post do %>
+      <%= button_tag type: 'submit', class: "btn btn-primary mx-2", method: :post do %>
         <i class="fas fa-share"></i>
       <% end %>
     </div>
