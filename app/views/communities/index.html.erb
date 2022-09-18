@@ -1,27 +1,30 @@
 <div class="container">
-  <h1 class="text-black">Our Communities</h1>
-  <% flash.each do |type, msg| %>
-    <div class="danger-text flax--message">
-      <%= msg %>
-    </div>
-  <% end %>
-
+  <h1 class="text-black mt-3">Our Communities</h1>
+      <% flash.each do |type, msg| %>
+        <div class="danger-text flax--message">
+          <%= msg %>
+        </div>
+      <% end %>
   <div class="community--container">
-
-  <% @communities.each  do |community|  %>
-    <div class="community--card">
-      <div class="community--card_header">
-        <%= cl_image_tag community.photo.key, height: 300, width: 400, crop: :fill %>
+    <% @communities.each  do |community|  %>
+      <div class="community--card">
+        <div class="community--card_header">
+          <%= cl_image_tag community.photo.key, height: 300, width: 400, crop: :fill %>
+        </div>
+        <div class="community--card__body">
+          <h4><%=  community.name %></h4>
+          <p><%= community.description.truncate(70)  %></p>
+        </div>
+        <% if community.memberships.one? { |member| member.user_id == current_user.id && member.community_id == community.id} %>
+          <div class="community--card__footer">
+            <%= button_to 'Joined',  community_memberships_path(community), disabled: true , class:"btn btn-primary" %>
+          </div>
+        <% else %>
+          <div class="community--card__footer">
+            <%= button_to 'Join',  community_memberships_path(community), method: :post , class:"btn btn-primary" %>
+          </div>
+        <% end %>
       </div>
-      <div class="community--card__body">
-        <h4><%=  community.name %></h4>
-        <p><%= community.description.truncate(70)  %></p>
-      </div>
-      <div class="community--card__footer">
-        <%= button_to 'Join',  community_memberships_path(community), method: :post , class:"btn btn-primary" %>
-      </div>
-
-    </div>
-    <% end%>
+      <% end%>
   </div>
 </div>

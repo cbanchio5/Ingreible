@@ -18,6 +18,8 @@
   </div>
 
 
+
+
   <!-- END SEARCH BAR -->
   <!-- INDEX SEARCH RESULTS -->
   <% if @search %>
@@ -149,14 +151,8 @@
                 <div class="relative ">
                   <%= cl_image_tag recipe.photo.key, class: "img-cover gradient--image" %>
                   <div class="absolute top-0 justify-content-end z-20 d-flex w-full smaller pt-2 pe-2">
-                    <% rating = recipe.reviews.average(:rating).to_f.round(2) %>
-                    <% if rating === 0 %>
-                      <div class="badge_rating d-flex text-black inactive--div">
-                        <%= image_tag "icon/rating-star.svg" %> <%= recipe.reviews.average(:rating).to_f.round(2)  %>
-                    <% else %>
                       <div class="badge_rating d-flex text-black">
                       <%= image_tag "icon/rating-star.svg" %> <%= recipe.reviews.average(:rating).to_f.round(2)  %>
-                    <% end %>
                   </div>
 
 

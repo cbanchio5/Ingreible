@@ -3,6 +3,7 @@ class FavouritesController < ApplicationController
 def index
 
   @favourites = policy_scope(Favourite).where(user_id: current_user).includes(:recipe)
+  @recipes = policy_scope(Recipe).sample(6)
   # if @favourites.user_id == current_user.id
   #   @favourites = policy_scope(Favourite)
   # end
