@@ -1,2 +1,15 @@
-<h1><%=@community.name %></h1>
-<%= link_to 'Jon community',  community_memberships_path(@community), method: :post, class:"btn-primary" %>
+<div class="community--container ">
+  <div class="header">
+    <%= cl_image_tag @community.photo.key, class: "show--image" %>
+  </div>
+
+  <div class="description">
+
+    <h3><%= @community.name  %></h3>
+    <p> <%= @community.description  %></p>
+    <%= link_to 'Join community',  community_memberships_path(@community), method: :post, class:" btn btn-primary" %>
+  </div>
+
+
+
+</div>
