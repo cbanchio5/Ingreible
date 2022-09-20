@@ -38,11 +38,16 @@ def create
 end
 
 def destroy
+  puts "ESTE ES LA REQUEST #{request.headers["referer"]}"
   @favourite = Favourite.find(params[:id])
   authorize @favourite
   #raise
   @favourite.destroy
-  redirect_to recipes_path
+  if request.headers["referer"].include?("recipes")
+    redirect_to recipes_path
+  else
+    redirect_to user_favourites_path(current_user)
+  end
 end
 
 end
