@@ -17,20 +17,17 @@
 
 <%# ##MESAGE FORM %>
 
-<div class="message-form m-4 ">
-  <%= simple_form_for [@community, @message], remote: true do |f| %>
-    <div class="d-flex flex-row">
-      <%= f.input :message, label: 'Insert your message', input_html: { class: "gray-border-rounded"},
+
+  <%= simple_form_for [@community, @message], html: { class: "message--form mx-4" },  remote: true do |f| %>
+    <div class="d-flex flex-row align-items-center">
+      <%= f.input :message, label: 'Insert your message', input_html: { class: "gray-border-rounded"}, wrapper_html: { class: "flex-grow-1"} ,
       :label_html => { :class => 'fs-6 text-black' } %>
       <%= button_tag type: 'submit', class: "btn btn-primary mx-2" do %>
         <i class="fas fa-share"></i>
       <% end %>
     </div>
-    <div class="form-actions">
-      <%= link_to  community_membership_path(current_user.id, @membership.id), class:"btn btn-danger mb-3 ", method: :delete, remote: true, data: { confirm: 'Are you sure?' } do%>
-        <i class="fas fa-portal-exit"></i>
-      <%end %>
-    </div>
-  <% end %>
+    <%# <div class="form-actions"> %>
+      <%# <%= link_to "Leave",  community_membership_path(current_user.id, @membership.id), class:"btn btn-danger mb-3 ", method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
 
-</div>
+    <%# </div> %>
+  <% end %>

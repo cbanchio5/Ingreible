@@ -27,7 +27,7 @@
         <%= message.message %>
     </p>
     <% if policy(message).destroy?%>
-      <%= link_to  message_path(message), class:"danger-text mx-2", method: :delete, remote: true, data: { confirm: 'Are you sure?' } do %>
+      <%= link_to  message_path(message), class:"danger-text mx-2", method: :delete, remote: true do %>
         <i class="fas fa-trash-alt"></i>
       <% end %>
     <% end %>
