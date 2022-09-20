@@ -8,10 +8,11 @@
   background-size: cover;
   flex-direction: column;
   box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.6);
+  flex-direction: row-reverse;
 }
 
 .favorite--title{
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 .card--favorite--data {
