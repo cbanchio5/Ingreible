@@ -122,17 +122,17 @@ serialized_data_reviews = File.read(filepath_reviews)
 reviews = JSON.parse(serialized_data_reviews)
 
 reviews.each do |review|
-  new_review = Review.new(content: review["review"], rating: (1..5).to_a.sample, user: User.order("RANDOM()").first, recipe:Recipe.order("RANDOM()").first)
+  new_review = Review.new(content: review["review"], rating: (1..5).to_a.sample, user: User.where(admin: false).order("RANDOM()").first, recipe:Recipe.order("RANDOM()").first)
   new_review.save!
 end
 
 reviews.each do |review|
-  new_review = Review.new(content: review["review"], rating: (1..5).to_a.sample, user: User.order("RANDOM()").first, recipe:Recipe.order("RANDOM()").first)
+  new_review = Review.new(content: review["review"], rating: (1..5).to_a.sample, user: User.where(admin: false).order("RANDOM()").first, recipe:Recipe.order("RANDOM()").first)
   new_review.save!
 end
 
 reviews.each do |review|
-  new_review = Review.new(content: review["review"], rating: (1..5).to_a.sample, user: User.order("RANDOM()").first, recipe:Recipe.order("RANDOM()").first)
+  new_review = Review.new(content: review["review"], rating: (1..5).to_a.sample, user: User.where(admin: false).order("RANDOM()").first, recipe:Recipe.order("RANDOM()").first)
   new_review.save!
 end
 
