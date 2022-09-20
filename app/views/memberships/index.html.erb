@@ -4,6 +4,7 @@
       <div class="container--favorite my-4">
       <% if @memberships.length === 0 %>
         <h3 class="text-black">You have not joined any community yet, what are you waiting for?</h3>
+        <%= image_tag("images/background-images/no_communities.jpg", size: "16x10", alt: "Edit Entry") %>
       <% else %>
         <% @memberships.each do |membership| %>
           <%= link_to  community_messages_path(membership.community.id),  class: "text-decoration-none" do%>

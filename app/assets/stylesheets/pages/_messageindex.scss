@@ -30,8 +30,18 @@
   justify-content: flex-start;
 }
 
-.message-form textarea {
-  display:flex!important;
+.message--form textarea {
+  flex-grow: 4;
+}
+
+.message--form button {
+
+}
+
+.message--form {
+  display:flex;
+  align-items: flex-end;
+
 }
 
 
