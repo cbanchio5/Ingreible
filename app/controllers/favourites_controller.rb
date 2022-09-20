@@ -28,12 +28,12 @@ def create
   @favourite.recipe_id = @recipe.id
   @favourite.user_id = current_user.id
   #relationship does not exist
- if  @favourite.save
-  redirect_to recipes_path
-  #redirect_to user_favourites_path(current_user.id)
- else
-  flash[:notice] = "Error"
- end
+  if  @favourite.save
+    redirect_to recipes_path
+    #redirect_to user_favourites_path(current_user.id)
+  else
+    flash[:notice] = "Error"
+  end
 
 end
 

@@ -122,6 +122,11 @@
   column-gap: 0.75rem;
 }
 
+.show--image {
+  height: auto;
+  width: 250px;
+}
+
 
 @keyframes disappearAnimation{
   0%{
@@ -158,6 +163,10 @@
   }
   .grid {
     grid-template-columns: repeat(4,minmax(0,1fr));
+  }
+  .show--image {
+    height: auto;
+    width: 450px;
   }
 
   }

@@ -16,6 +16,7 @@
     </div>
   </div>
   <!-- END SEARCH BAR -->
+
   <!-- INDEX SEARCH RESULTS -->
   <% if @search %>
     <%# RESULT COUNT HEADER %>
@@ -87,7 +88,7 @@
     <% else %>
       <!-- CAROUSEL CARDS -->
       <div class="row flex-row flex-nowrap overflow-scroll hide-scrollbar">
-        <% @recipes.sample(6).each do |recipe| %>
+        <% @recipes.first(6).each do |recipe| %>
           <div class="col-6 col-sm-4 ">
             <div class="card-slider relative w-full">
               <!-- link container -->
@@ -118,7 +119,7 @@
                   <div class="d-flex h-full global_bookmark">
                     <% favourite = Favourite.find_by(user:current_user, recipe:recipe)  %>
                     <%if favourite %>
-                      <%= link_to user_favourite_path(current_user, favourite), method: :delete do%>
+                      <%= link_to user_favourite_path(current_user, favourite), remote: true, method: :delete do%>
                         <%= image_tag "icon/bookmark-active.svg", class: "icon" %>
                       <% end %>
                     <% else %>
