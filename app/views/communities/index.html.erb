@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="text-black mt-3">Our Communities</h1>
+  <h1 class="text-black">Our communities!</h1>
   <div class="community--container">
     <% @communities.each  do |community|  %>
       <div class="community--card">
@@ -16,7 +16,9 @@
           </div>
         <% else %>
           <div class="community--card__footer">
-            <%= button_to 'Join',  community_memberships_path(community), method: :post , class:"btn btn-primary" %>
+            <%= button_to   community_memberships_path(community), method: :post , class:"btn btn-primary" do%>
+              <i class="fas fa-sign-in-alt"></i>
+            <% end %>
           </div>
         <% end %>
       </div>
