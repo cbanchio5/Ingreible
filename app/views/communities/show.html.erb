@@ -1,13 +1,13 @@
 <div class="community--container ">
   <div class="header">
-    <%= cl_image_tag @community.photo.key, class: "show--image" %>
+    <%= cl_image_tag @community.photo.key, class: "show--image border--round" %>
   </div>
 
-  <div class="description">
+  <div class="description mx-4">
 
     <h3><%= @community.name  %></h3>
     <p> <%= @community.description  %></p>
-    <%= link_to 'Join community',  community_memberships_path(@community), method: :post, class:" btn btn-primary" %>
+    <%= link_to 'Join',  community_memberships_path(@community), method: :post, class:" btn btn-primary" %>
   </div>
 
 
