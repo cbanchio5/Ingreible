@@ -17,5 +17,5 @@ class Recipe < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
-
+ #scope :filter_by_difficulty, ->(tag_ids_arr) { joins(:tags).where( tags: { id: tag_ids_arr } ) }
 end
