@@ -11,6 +11,7 @@ class RecipesController < ApplicationController
     @vegetables = ["eggs", "pepper", "almond", "chocolate", "caramel", "strawberry"].sample
     @recipes2 = Recipe.search_by_name_and_ingredients(@vegetables)
     @search = !params[:query].nil?
+    @recipes = @recipes.select { |recipe| recipe.difficulty == params[:difficulty] } if params[:difficulty]
   end
 
   # if params[:query].present?
