@@ -114,6 +114,14 @@
   width:100%;
 }
 
+.border--round {
+  border-radius: 20px;
+}
+
+.letter--space {
+  letter-spacing: -0.05em;
+}
+
 // GRID
 .grid {
   display: grid;
@@ -125,6 +133,10 @@
 .show--image {
   height: auto;
   width: 250px;
+}
+
+.opacity-10 {
+  opacity: 0.1;
 }
 
 
