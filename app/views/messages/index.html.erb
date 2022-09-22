@@ -17,12 +17,12 @@
 
 <%# ##MESAGE FORM %>
 
-
-  <%= simple_form_for [@community, @message], html: { class: "message--form mx-4" },  remote: true do |f| %>
-    <div class="d-flex flex-row align-items-center">
-      <%= f.input :message, label: 'Insert your message', input_html: { class: "gray-border-rounded"}, wrapper_html: { class: "flex-grow-1"} ,
+<div class="container">
+  <%= simple_form_for [@community, @message], html: { class: "message--form p-5 mt-2 d-inline" },  remote: true do |f| %>
+    <div class="d-flex flex-row align-items-center justify-content-between">
+      <%= f.input :message, label: 'Insert your message', input_html: { class: "gray-border-rounded mr-4 p-0"}, wrapper_html: { class: "flex-grow-1"} ,
       :label_html => { :class => 'fs-6 text-black' } %>
-      <%= button_tag type: 'submit', class: "btn btn-primary mx-2" do %>
+      <%= button_tag type: 'submit', class: "btn btn-primary mx-2 p-2 mt-3" do %>
         <i class="fas fa-share"></i>
       <% end %>
     </div>
@@ -31,3 +31,4 @@
 
     <%# </div> %>
   <% end %>
+</div>
