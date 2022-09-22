@@ -29,7 +29,11 @@ def create
   @favourite.user_id = current_user.id
   #relationship does not exist
   if  @favourite.save
-    redirect_to recipes_path
+    if request.headers["referer"].include?("recipes")
+      redirect_to recipes_path
+    else
+      redirect_to user_favourites_path(current_user)
+    end
     #redirect_to user_favourites_path(current_user.id)
   else
     flash[:notice] = "Error"

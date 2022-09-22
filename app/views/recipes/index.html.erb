@@ -8,6 +8,9 @@
         class: "form-control gray-border-rounded",
         placeholder: "Search by recipe or ingredients..."
       %>
+      <%= link_to recipes_path  class: "relative clear--search" do%>
+        <i class="far fa-times-circle"></i>
+      <% end %>
         <%# <%= submit_tag "Search", class: "btn btn-primary mx-3 btn-sm text-white" %>
         <%= button_tag type: 'submit', class: "btn btn-primary btn-sm ms-3 text-white" do %>
           <%= image_tag "icon/filters.svg" %>
@@ -146,7 +149,7 @@
       </div>
       <!-- END CAROUSEL CARDS -->
       <!-- RECIPES RECOMMENDATIONS -->
-      <h2 class="normal bold text-black">5 <%=@vegetables.capitalize %> recipes to make this week </h2>
+      <h1 class="normal bold text-black mt-3">5 <%=@vegetables.capitalize %> recipes to make this week </h1>
       <div class="row flex-row flex-nowrap overflow-scroll hide-scrollbar">
         <% @recipes2.first(6).each do |recipe| %>
           <div class="col-12 col-lg-6 ">

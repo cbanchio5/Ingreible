@@ -122,6 +122,14 @@
   letter-spacing: -0.05em;
 }
 
+.decoration--none {
+  text-decoration: none;
+}
+
+.clear--search {
+  right: 20px;
+}
+
 // GRID
 .grid {
   display: grid;
@@ -180,5 +188,6 @@
     height: auto;
     width: 450px;
   }
+
 
   }
