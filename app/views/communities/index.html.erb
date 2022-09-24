@@ -13,7 +13,7 @@
         </div>
         <% if community.memberships.one? { |member| member.user_id == current_user.id && member.community_id == community.id} %>
           <div class="community--card__footer">
-            <%= button_to 'Joined',  community_memberships_path(community), disabled: true , class:"btn btn-primary" %>
+            <%= button_to 'Visit',  community_path(community), method: :get, class:"btn btn-primary" %>
           </div>
         <% else %>
           <div class="community--card__footer">

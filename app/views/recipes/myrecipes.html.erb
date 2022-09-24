@@ -2,7 +2,8 @@
   <h1 class="text-black mt-3 letter--space">Your Recipes</h1>
     <% if @recipes.length === 0 %>
       <h4 class="text-gray3 letter--space">You haven't created any recipes yet!</h4>
-      <%= link_to "Create your first recipe", new_recipe_path, class: "" %>
+      <%= image_tag "background-images/no_communities.jpg", class: "d-flex w-50 border--round my-3"  %>
+      <%= link_to "Create your first recipe", new_recipe_path, class: "decoration--none mb-3" %>
     <% else %>
     <div class="container--favorite my-4">
       <% @recipes.each do |recipe| %>
