@@ -2,29 +2,36 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
-  static targets = ["link1", "link2", "link3", "link4", "link5"]
+  static targets = ["link1", "link2", "link3", "link4", "link5", "rating"]
 
-  connect() {
-    console.log("rating controller")
-  }
 
   getValue1() {
-    console.log(this.link1Target.value * 1)
+    let rating = this.link1Target.value * 1
+    this.ratingTarget.value = rating
+
   }
 
   getValue2() {
-    console.log(this.link2Target.value * 1)
+    let rating = this.link2Target.value * 1
+    this.ratingTarget.value = rating
+
   }
 
   getValue3() {
-    console.log(this.link3Target.value * 1)
+    let rating = this.link3Target.value * 1
+    this.ratingTarget.value = rating
+
   }
 
   getValue4() {
-    console.log(this.link4Target.value * 1)
+    let rating = this.link4Target.value * 1
+    this.ratingTarget.value = rating
+
   }
 
   getValue5() {
-    console.log(this.link5Target.value * 1)
+    let rating = this.link5Target.value * 1
+    this.ratingTarget.value = rating
+
   }
 }
