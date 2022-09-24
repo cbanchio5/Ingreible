@@ -75,10 +75,24 @@
   background-color: $primary3;
 }
 
+.bg-color-white {
+  background-color: $white;
+}
+
 //ERROR TEXT COLOR
 .danger-text {
   color: $red;
 }
+
+// BORDER COLOR
+.border-color-gray4 {
+  border-color: $gray4;
+}
+
+.border-color-gray5 {
+  border-color: $gray5;
+}
+
 
 // IMAGE STYLE COVER
 .img-cover {
@@ -114,9 +128,17 @@
   width:100%;
 }
 
+// Radius
+
 .border--round {
   border-radius: 20px;
 }
+
+.border--round--10 {
+  border-radius: 10px;
+}
+
+
 
 .letter--space {
   letter-spacing: -0.05em;

@@ -8,7 +8,7 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  height: 48px;
 }
 .navbar {
   background-color:  $primary1;
@@ -25,4 +25,22 @@
 .sign-in-button:hover{
   background-color: #4838383f;
   color: rgba(220, 220, 220, 1);
+}
+
+.navbar-toggler {
+  border: none;
+  padding-right: 0;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.nav-link {
+  color: $primary4;
 }
