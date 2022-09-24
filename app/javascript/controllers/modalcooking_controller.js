@@ -15,6 +15,12 @@ export default class extends Controller {
         this.previousTarget.removeAttribute('disbaled')
       }
 
+      let totalSteps = this.contentTarget.querySelectorAll('.step').length
+      if (totalSteps < 2) {
+        this.nextTarget.setAttribute("disabled", "")
+      }
+
+
     }
 
     open() {

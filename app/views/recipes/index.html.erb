@@ -5,11 +5,15 @@
       <%= form_tag recipes_path, method: :get, :class => 'd-flex justify-content-start' do %>
         <%= text_field_tag :query,
         params[:query],
-        class: "form-control border--round--10 border-color-gray4  bg-color-white py-2 text-gray1",
+        class: "form-control border--round--10 border-color-gray4  text-black bg-color-white py-2 text-gray1",
         placeholder: "Search by recipe or ingredients..."
       %>
-      <%= link_to recipes_path  class: "relative clear--search" do%>
-        <i class="far fa-times-circle"></i>
+      <% if params[:query] || params[:difficulty] %>
+        <div class="position-absolute clear--search">
+          <%= link_to recipes_path, request.query_parameters.merge({difficulty: nil, query: nil}), remote: true do%>
+            <i class="far fa-times-circle"></i>
+          <% end %>
+        </div>
       <% end %>
         <%# <%= submit_tag "Search", class: "btn btn-primary mx-3 btn-sm text-white" %>
         <%#= button_tag type: 'submit', class: "btn btn-primary btn-sm ms-3 text-white" do %>
@@ -19,16 +23,16 @@
     </div>
   </div>
   <div class="dropdown d-flex flex-row align-items-center">
-  <div class="small text-gray1 pe-1">Diffculty:</div>
-  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    All
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-     <li><%= link_to 'easy', request.query_parameters.merge({difficulty: "easy"}), class: "dropdown-item" %></li>
-    <li><%= link_to 'medium', request.query_parameters.merge({difficulty: "medium"}), class: "dropdown-item" %></li>
-    <li><%= link_to 'hard', request.query_parameters.merge({difficulty: "hard"}), class: "dropdown-item" %></li>
-  </ul>
-</div>
+    <div class="small text-gray1 pe-1">Diffculty:</div>
+      <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        All
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><%= link_to 'easy', request.query_parameters.merge({difficulty: "easy"}), class: "dropdown-item" %></li>
+        <li><%= link_to 'medium', request.query_parameters.merge({difficulty: "medium"}), class: "dropdown-item" %></li>
+        <li><%= link_to 'hard', request.query_parameters.merge({difficulty: "hard"}), class: "dropdown-item" %></li>
+      </ul>
+    </div>
   <!-- END SEARCH BAR -->
   <!-- INDEX SEARCH RESULTS -->
   <% if @search %>
