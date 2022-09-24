@@ -58,7 +58,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-action="click->modal#close" ></button>
           </div>
           <div class="modal-body">
-            <div class="container sign-in m-5" data-controller="rating">
+            <div class="" data-controller="rating">
               <%= simple_form_for [ @recipe, @review ] do |f| %>
                 <%= f.input :content, input_html: { class: "gray-border-rounded"} %>
                 <%= f.input :rating, as: :hidden,  input_html: { class: "gray-border-rounded", data: { 'rating-target': 'rating' }}, wrapper_html: { class: 'js-linked' } %>

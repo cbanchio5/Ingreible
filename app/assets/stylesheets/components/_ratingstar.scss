@@ -51,7 +51,8 @@
 }
 
 .rating label:last-child .icon {
-  color: #000;
+  color: rgba(0,0,0, 0.2);
+  border-color: #000;
 }
 
 .rating:not(:hover) label input:checked ~ .icon,
