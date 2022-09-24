@@ -3,31 +3,31 @@
     <%= f.input :content, input_html: { class: "gray-border-rounded"} %>
     <%= f.input :rating, as: :hidden,  input_html: { class: "gray-border-rounded"} %>
 
-    <div class="rating">
+    <div class="rating d-flex align-item-center" data-controller="rating">
       <label>
-        <input type="radio" name="stars" value="1" />
+        <input type="radio" name="stars" value="1" data-action="click->rating#getValue"/>
         <span class="icon">★</span>
       </label>
       <label>
-        <input type="radio" name="stars" value="2" />
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-      </label>
-      <label>
-        <input type="radio" name="stars" value="3" />
-        <span class="icon">★</span>
+        <input type="radio" name="stars" value="2" data-action="click->rating#getValue" />
         <span class="icon">★</span>
         <span class="icon">★</span>
       </label>
       <label>
-        <input type="radio" name="stars" value="4" />
-        <span class="icon">★</span>
+        <input type="radio" name="stars" value="3" data-action="click->rating#getValue" />
         <span class="icon">★</span>
         <span class="icon">★</span>
         <span class="icon">★</span>
       </label>
       <label>
-        <input type="radio" name="stars" value="5" />
+        <input type="radio" name="stars" value="4" data-action="click->rating#getValue"/>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" name="stars" value="5" data-action="click->rating#getValue"/>
         <span class="icon">★</span>
         <span class="icon">★</span>
         <span class="icon">★</span>
