@@ -32,7 +32,7 @@ class RecipesController < ApplicationController
   end
 
   def myrecipes
-    @recipes = Recipe.where(user: current_user)
+    @recipes = Recipe.where(user: current_user).includes(:favourites)
     authorize @recipes
   end
 

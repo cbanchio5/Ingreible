@@ -9,9 +9,11 @@
         placeholder: "Search by recipe or ingredients..."
       %>
       <% if params[:query] || params[:difficulty] %>
-        <%= link_to recipes_path, request.query_parameters.merge({difficulty: nil, query: nil}),  class: "position-absolute clear--search", remote: true do%>
-          <i class="far fa-times-circle"></i>
-        <% end %>
+        <div class="position-absolute clear--search">
+          <%= link_to recipes_path, request.query_parameters.merge({difficulty: nil, query: nil}), remote: true do%>
+            <i class="far fa-times-circle"></i>
+          <% end %>
+        </div>
       <% end %>
         <%# <%= submit_tag "Search", class: "btn btn-primary mx-3 btn-sm text-white" %>
         <%#= button_tag type: 'submit', class: "btn btn-primary btn-sm ms-3 text-white" do %>

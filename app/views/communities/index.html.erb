@@ -4,9 +4,11 @@
     <% @communities.each  do |community|  %>
       <div class="community--card">
         <div class="community--card_header">
+          <%link_to  community_messages_path(community) %>
           <%= cl_image_tag community.photo.key, height: 300, width: 400, crop: :fill %>
         </div>
         <div class="community--card__body">
+
           <h4><%=  community.name %></h4>
           <p><%= community.description.truncate(70)  %></p>
         </div>
