@@ -1,7 +1,8 @@
 <div class="container">
   <h1 class="text-black mt-3 letter--space">Your Recipes</h1>
     <% if @recipes.length === 0 %>
-      <h3 class="text-gray3 letter--space">You haven't created any recipes yet!</h3>
+      <h4 class="text-gray3 letter--space">You haven't created any recipes yet!</h4>
+      <%= link_to "Create your first recipe", new_recipe_path, class: "" %>
     <% else %>
     <div class="container--favorite my-4">
       <% @recipes.each do |recipe| %>
