@@ -65,6 +65,10 @@
 .text-white {
   color: $white;
 }
+
+.text-primary1 {
+  color: $primary1;
+}
 // BG COLOR
 .bg-color-primary5 {
   background-color: $primary5;
@@ -110,6 +114,11 @@
 .img-300 {
   height:300px;
 }
+
+.img-180 {
+  height:180px;
+}
+
 .img-fill {
   object-fit: fill;
 }

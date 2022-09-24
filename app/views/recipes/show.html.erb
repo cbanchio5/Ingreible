@@ -1,16 +1,35 @@
 <div class="col-12">
   <div class="relative image--header">
     <%= cl_image_tag @recipe.photo.key, class: "img-cover img-300 gradient--image-primary" %>
-    <div class="absolute top-0 justify-content-end z-20 d-flex w-full smaller pt-2 pe-2 banner-star">
-      <div class="badge_rating d-flex text-black">
-        <%= image_tag "icon/rating-star.svg" %><%= @recipe.reviews.average(:rating).to_f.round(2)  %>
-      </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-3 text-center">
+
+
+  <div class="header bold text-gray1  mt-3">
+    <%= @recipe.name%>
+  </div>
+  <div class="d-flex align-items-center justify-content-center gap-4 py-3">
+    <!-- bookmark toggle -->
+    <div class="d-flex h-full global_bookmark  align-items-center gap-1">
+      <%= image_tag "icon/bookmark.svg", class: "icon" %>
+      <div class="small text-primary1">Save</div>
     </div>
+    <!-- bookmark toggle end -->
+
+    <!-- rate -->
+    <div class="d-flex h-full global_bookmark  align-items-center gap-1">
+      <%= image_tag "icon/message.svg", class: "icon" %>
+      <div class="small text-primary1">Leave a review</div>
+    </div>
+    <!-- rate end -->
   </div>
 </div>
 
 
-<div class="recipe-info d-flex justify-content-between w-full py-3 px-4 mt-0 text-gray3 small bg-color-primary5">
+
+<div class="recipe-info d-flex justify-content-between w-full py-3 px-4 my-3 text-gray2 small bg-color-primary5">
   <div class="text-center">
     Difficulty <br><span class="bold text-gray1"> <%= @recipe.difficulty %></span>
   </div>
@@ -23,13 +42,12 @@
 </div>
 
 
-
-<div class="container-fluid mt-3">
-  <h2 class="normal bold text-gray1 mx-3">Ingredients:</h2>
+<div class="container-fluid mt-4">
+  <h2 class="large bold text-gray1">Ingredients</h2>
   <ul class="text-gray2 small ps-0">
     <% @recipe.ingredients.split('--').each do |ingredient| %>
-      <div class="ingredient--info d-flex flex-row m-3 bg-color-primary5 p-3">
-        <input  class="mx-3"type="checkbox" aria-label="Checkbox for following text input"> <li class="list-group-item pt-1"> <%= ingredient %></li>
+      <div class="ingredient--info d-flex flex-row my-2 bg-color-primary5 text-gray1 px-3 py-3 border--round--10">
+        <input  class="me-2"type="checkbox" aria-label="Checkbox for following text input"> <li class="list-group-item pt-1"> <%= ingredient %></li>
       </div>
     <% end %>
   </ul>
@@ -48,8 +66,71 @@
 
 
 
-  <%# ###REVIEW MODAL %>
+  <%# ###MODALS %>
+  <div class="modal--review container sign-in my-5" data-controller="demo">
+    <%# COOKING MODAL %>
+    <div class="modal--review container sign-in" data-controller="demo1">
+      <div class="modal" data-demo1-target="modal" data-controller="modal">
+        <div class="modal-dialog modal-fullscreen-lg-down">
+          <div class="modal-content">
+            <div class=" p-0 relative">
+              <div class="gradient--image-primary">
+              <%= cl_image_tag @recipe.photo.key, class: "img-cover img-180 " %>
+              </div>
+              <div class="normal bold absolute text-white bottom-0 z-20 d-flex pb-3 ps-3"><%= @recipe.name%></div>
+              <button type="button" class="btn-close absolute top-0 end-0 z-20 d-flex  pt-4 pe-4" data-bs-dismiss="modal" aria-label="Close" data-action="click->modal#close" ></button>
+            </div>
+            <div class="div" data-controller="modalcooking">
+              <% index = 0 %>
+            <div class="modal-body" >
+              <h4 data-modalcooking-target="index" class="bold large text-gray1" >Step <%=index + 1 %> </h4>
+              <div class="step-container" data-modalcooking-target="content">
+                <% @recipe.steps.split('--').each do |step| %>
+                  <div class="step inactive--div">
+                  <p class="small text-gray1"><%=step  %></p>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button  data-action="click->modalcooking#previous" class="btn btn-primary text-white" data-modalcooking-target="previous" >Previous</button>
+              <button  data-action="click->modalcooking#next" class="btn btn-primary text-white" data-modalcooking-target="next">Next</button>
+              <%# <button data-action="click->modal#close" class="btn btn-secondary">Close</button> %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%# END OF COOKING MODAL %>
+
+    <%# CTA BUTTONS %>
+
+    <div class="container-fluid">
+      <div class="action--buttons">
+        <button type="button" class="btn btn-primary " data-action= 'demo1#launchDemo' >Start Cooking!</button>
+      </div>
+    </div>
+
+    <%# link_to "Profile", profile_path(@profile.id, param1: 'value1', param2: 'value2'), method: :post %>
+  </div>
+<%# ### END MODALS %>
+</div>
+<div class = "d-flex justify-content-start mx-4">
+   <% if policy(@recipe).destroy? %>
+    <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: 'Are you sure?' }, class:"text-danger decoration--none"%>
+   <% end %>
+</div>
+
+<%# REVIEWS SECTION %>
+<hr class="text-gray3 w-50 mx-auto d-flex justify-content-center ">
+
+<div class="review--section mx-3 mb-5">
+  <h2 class="text-gray1 large bold">Reviews</h2>
+
+    <%# ###MODALS %>
   <div class="modal--review container sign-in mt-5" data-controller="demo">
+    <%# ###REVIEW MODAL %>
     <div class="modal" data-demo-target="modal" data-controller="modal">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -74,64 +155,22 @@
     <%# END OF REVIEW MODAL %>
 
 
-    <%# COOKING MODAL %>
-
-    <div class="modal--review container sign-in mt-5" data-controller="demo1">
-      <div class="modal" data-demo1-target="modal" data-controller="modal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="fw-semibold fs-1">Cook</h2>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-action="click->modal#close" ></button>
-            </div>
-            <div class="div" data-controller="modalcooking">
-              <% index = 0 %>
-            <div class="modal-body" >
-              <h4 data-modalcooking-target="index" >Step <%=index + 1 %> </h4>
-              <div class="step-container" data-modalcooking-target="content">
-                <% @recipe.steps.split('--').each do |step| %>
-                  <div class="step inactive--div">
-                  <p><%=step  %></p>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button  data-action="click->modalcooking#previous" class="btn btn-primary text-white" data-modalcooking-target="previous" >Previous</button>
-              <button  data-action="click->modalcooking#next" class="btn btn-primary text-white" data-modalcooking-target="next">Next</button>
-              <%# <button data-action="click->modal#close" class="btn btn-secondary">Close</button> %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <%# END OF COOKING MODAL %>
 
     <%# CTA BUTTONS %>
 
     <div class="container-fluid">
       <div class="action--buttons">
-        <button type="button" class="btn btn-primary m-3 " data-action= 'demo1#launchDemo' >Start Cooking!</button>
+
         <%= button_to 'Leave a review',  '#', class:"btn btn-primary m-3 ", :data => {  :action => 'demo#launchDemo' } %>
       </div>
     </div>
 
     <%# link_to "Profile", profile_path(@profile.id, param1: 'value1', param2: 'value2'), method: :post %>
   </div>
+<%# ### END MODALS %>
 
-</div>
-<div class = "d-flex justify-content-start mx-4">
-   <% if policy(@recipe).destroy? %>
-    <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: 'Are you sure?' }, class:"text-danger decoration--none"%>
-   <% end %>
-</div>
 
-<%# REVIEWS SECTION %>
-<hr class="text-gray3 w-50 mx-auto d-flex justify-content-center ">
 
-<div class="review--section mx-3 mb-5">
-  <h2 class="text-black">Reviews</h2>
   <% @recipe.reviews.sample(3).each do |review| %>
       <div class="comment mt-3">
         <div class="comment-heading">

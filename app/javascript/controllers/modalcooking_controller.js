@@ -10,9 +10,14 @@ export default class extends Controller {
       this.contentTarget.querySelectorAll('.step')[step -1].classList.remove('inactive--div')
 
       if (step === 1) {
-        this.previousTarget.setAttribute("disabled", "")
+        this.previousTarget.setAttribute("style", "display:none")
       } else {
-        this.previousTarget.removeAttribute('disbaled')
+        this.previousTarget.removeAttribute("style", "display:none")
+        this.previousTarget.setAttribute("style", "display:flex")
+      }
+      let totalSteps = this.contentTarget.querySelectorAll('.step').length
+      if (totalSteps < 2) {
+        this.nextTarget.setAttribute("style", "display:none")
       }
 
       let totalSteps = this.contentTarget.querySelectorAll('.step').length
@@ -52,17 +57,19 @@ export default class extends Controller {
 
     //Disable next button if current step is last step
     if (nextStep === totalSteps) {
-      this.nextTarget.setAttribute("disabled", "")
+      this.nextTarget.setAttribute("style", "display:none")
     } else {
-      this.nextTarget.removeAttribute('disabled')
+      this.nextTarget.removeAttribute("style", "display:none")
+      this.nextTarget.setAttribute("style", "display:flex")
     }
 
     //Able the previous button if not in first step
 
     if(nextStep > 1) {
-      this.previousTarget.removeAttribute('disabled')
+      this.previousTarget.removeAttribute("style", "display:none")
+      this.previousTarget.setAttribute("style", "display:flex")
     } else {
-      this.previousTarget.setAttribute("disabled", "")
+      this.previousTarget.setAttribute("style", "display:flex")
     }
 
     //Update step title
@@ -93,18 +100,22 @@ export default class extends Controller {
 
     //Disable next button if current step is last step
     if (previousStep === totalSteps) {
-      this.nextTarget.setAttribute("disabled", "")
+      this.nextTarget.setAttribute("style", "display: none")
     } else {
-      this.nextTarget.removeAttribute('disabled')
+      this.nextTarget.removeAttribute("style", "display:none")
+      this.nextTarget.setAttribute("style", "display:flex")
     }
+
 
     //Able the previous button if not in first step
 
     if(previousStep > 1) {
-      this.previousTarget.removeAttribute('disabled')
+      this.previousTarget.removeAttribute("style", "display:none")
+      this.previousTarget.setAttribute("style", "display:flex")
     } else {
-      this.previousTarget.setAttribute("disabled", "")
+      this.previousTarget.setAttribute("style", "display: none")
     }
+
 
     //Update step title
 
