@@ -20,11 +20,6 @@ export default class extends Controller {
         this.nextTarget.setAttribute("style", "display:none")
       }
 
-      let totalSteps = this.contentTarget.querySelectorAll('.step').length
-      if (totalSteps < 2) {
-        this.nextTarget.setAttribute("disabled", "")
-      }
-
 
     }
 
