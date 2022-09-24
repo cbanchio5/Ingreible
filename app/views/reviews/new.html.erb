@@ -1,7 +1,45 @@
 <div class="container sign-in m-5">
   <%= simple_form_for [ @recipe, @review ] do |f| %>
     <%= f.input :content, input_html: { class: "gray-border-rounded"} %>
-    <%= f.input :rating, input_html: { class: "gray-border-rounded"} %>
+    <%= f.input :rating, as: :hidden,  input_html: { class: "gray-border-rounded"} %>
+
+    <div class="rating">
+      <label>
+        <input type="radio" name="stars" value="1" />
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" name="stars" value="2" />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" name="stars" value="3" />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" name="stars" value="4" />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" name="stars" value="5" />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+    </div>
+    <hr>
     <%= f.submit "Submit review", class: "btn btn-primary" %>
   <% end %>
+
+
+
+
 </div>
