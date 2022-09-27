@@ -34,6 +34,8 @@ class ReviewsController < ApplicationController
     @reviews = policy_scope(Review)
     @reviews = Review.where(recipe_id: params[:recipe_id] )
     @review = Review.new
+    @recipe = Recipe.find(params[:recipe_id])
+    authorize @recipe
 
 
   end
