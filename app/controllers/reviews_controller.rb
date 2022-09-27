@@ -31,17 +31,14 @@ class ReviewsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def index
-    @reviews = policy_scope(Review)
-    @reviews = Review.where(recipe_id: params[:recipe_id] )
+    @reviews = policy_scope(Review).order(created_at: :desc)
+    @reviews = Review.where(recipe_id: params[:recipe_id])
     @review = Review.new
     @recipe = Recipe.find(params[:recipe_id])
     authorize @recipe
-
-
   end
 
   private
