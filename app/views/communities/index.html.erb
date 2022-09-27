@@ -4,27 +4,15 @@
     <% @communities.each  do |community|  %>
       <div class="community--card">
         <div class="community--card_header">
-          <%= cl_image_tag community.photo.key, height: 300, width: 400, crop: :fill %>
+          <%= link_to  community_messages_path(community), method: :get , class:"" do %>
+            <%= cl_image_tag community.photo.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
         </div>
         <div class="community--card__body">
-
-          <h4><%=  community.name %></h4>
-          <p><%= community.description.truncate(70)  %></p>
+          <h4 class= "fs-5 text"><%=  community.name %></h4>
+          <p class="fs-6 text text-gray2"><%= community.description.truncate(70)  %></p>
         </div>
-        <% if community.memberships.one? { |member| member.user_id == current_user.id && member.community_id == community.id} %>
-          <div class="community--card__footer">
-            <%= button_to community_messages_path(community), method: :get, class:"btn btn-outline-primary" do%>
-              <i class="fas fa-plus"></i>
-            <% end %>
-          </div>
-        <% else %>
-          <div class="community--card__footer">
-            <%= button_to  community_messages_path(community), method: :get , class:"btn btn-outline-primary" do%>
-              <i class="fas fa-sign-in-alt"></i>
-            <% end %>
-          </div>
-        <% end %>
       </div>
-      <% end%>
+    <% end%>
   </div>
 </div>
