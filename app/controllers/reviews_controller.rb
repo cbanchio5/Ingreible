@@ -23,7 +23,11 @@ class ReviewsController < ApplicationController
     @review.recipe_id = @recipe.id
     @review.recipe = @recipe
     if @review.save
-      redirect_to recipe_path(@recipe)
+      if request.headers["referer"].include?("reviews")
+        redirect_to recipe_reviews_path(@recipe)
+      else
+        redirect_to recipe_path(@recipe)
+      end
     else
       render :new
     end
