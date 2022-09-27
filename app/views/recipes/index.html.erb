@@ -55,7 +55,7 @@
                   <% rating = recipe.reviews.average(:rating).to_f.round(2) %>
                   <% if rating === 0 %>
                     <div class="badge_rating d-flex text-black inactive--div">
-                      <%= image_tag "icon/rating-star.svg" %> <%= recipe.reviews.average(:rating).to_f.round(2)  %>
+                      <%= image_tag "icon/rating-star.svg", class: "inactive--div" %> <%= recipe.reviews.average(:rating).to_f.round(2)  %>
                   <% else %>
                     <div class="badge_rating d-flex text-black">
                     <%= image_tag "icon/rating-star.svg" %> <%= recipe.reviews.average(:rating).to_f.round(2)  %>
@@ -153,9 +153,9 @@
       </div>
       <!-- END CAROUSEL CARDS -->
       <!-- RECIPES RECOMMENDATIONS -->
-      <h1 class="normal bold text-black mt-3">5 <%=@vegetables.capitalize %> recipes to make this week </h1>
+      <h1 class="normal bold text-black mt-3">5 recipes to make this week </h1>
       <div class="row flex-row flex-nowrap overflow-scroll hide-scrollbar">
-        <% @recipes2.first(6).each do |recipe| %>
+        <% @recipes2.sample(6).each do |recipe| %>
           <div class="col-12 col-lg-6 ">
             <div class="card-slider relative w-full">
               <!-- link container -->

@@ -91,10 +91,6 @@
     <!-- rate end -->
   </div>
 </div>
-
-
-
-
 <div class="recipe-info d-flex justify-content-between w-full py-3 px-4 my-3 text-gray2 small bg-color-primary5">
   <div class="text-center">
     Difficulty <br><span class="bold text-gray1"> <%= @recipe.difficulty %></span>
@@ -276,7 +272,12 @@
 
 
   <div class="pb-2">
-  <% @recipe.reviews.sample(3).each do |review| %>
+ <% if @recipe.reviews.length === 0 %>
+    <p class= "text-gray3 letter--space">No reviews yet</p>
+
+<% else %>
+
+  <% @recipe.reviews.order(created_at: :desc).first(3).each do |review| %>
       <div class="comment mt-3">
         <div class="comment-heading gap-1">
           <% if review.user.photo.attached? %>
@@ -299,8 +300,12 @@
         </p>
       </div>
   <% end %>
+  <% end %>
   </div>
-  <%= link_to 'View more', recipe_reviews_path(@recipe), class:"mt-5 small text-primary1 text-decoration-none" %>
+  <% if @recipe.reviews.length > 3 %>
+      <%= link_to 'View more', recipe_reviews_path(@recipe), class:"mt-5 small text-primary1 text-decoration-none" %>
+    <% end %>
+
 </div>
 
 
