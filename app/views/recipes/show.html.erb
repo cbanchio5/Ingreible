@@ -53,19 +53,6 @@
   </ul>
 </div>
 
-
-<%# <div class="container-fluid mt-3"> %>
-  <%# <ul class="text-gray2 small ps-0"> %>
-    <%# <% @recipe.steps.split('--').each_with_index do |step, index| %>
-      <%# <h2 class="normal bold text-gray1">Step <%= index + 1 %>
-      <%# <li class="list-group-item pt-1"> <%= step %>
-    <%# <% end %>
-  <%# </ul> %>
-<%# </div> %>
-
-
-
-
   <%= render partial: "cooking_modal", locals: {  } %>
 
     <%# CTA BUTTONS %>
@@ -88,7 +75,7 @@
 <%# REVIEWS SECTION %>
 <hr class="text-gray3 w-50 mx-auto d-flex justify-content-center ">
 
-<div class="review--section mx-3 mb-5">
+<div class="review--section mx-3 mb-3">
   <h2 class="text-gray1 large bold">Reviews</h2>
 
 
@@ -120,7 +107,9 @@
           </p>
         </div>
     <% end %>
-    <%= link_to 'View more reviews', recipe_reviews_path(@recipe), class:"mt-5" %>
+    <% if @recipe.reviews.length > 3 %>
+      <%= link_to 'View more reviews', recipe_reviews_path(@recipe), class:"mt-5" %>
+    <% end %>
   <% end %>
 
 </div>
