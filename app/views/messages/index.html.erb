@@ -17,18 +17,22 @@
 
 <%# ##MESAGE FORM %>
 
-<div class="container">
-  <%= simple_form_for [@community, @message], html: { class: "message--form p-5 mt-2 d-inline" },  remote: true do |f| %>
-    <div class="d-flex flex-row align-items-center justify-content-start">
-      <%= f.input :message, label: 'Insert your message', input_html: { class: "gray-border-rounded mr-4 p-2 adjust--with"}, wrapper_html: { class: "flex-grow-1"} ,
-      :label_html => { :class => 'fs-6 text-black' } %>
-      <%= button_tag type: 'submit', class: "btn btn-primary mx-2 p-2 mt-3" do %>
-        <i class="fas fa-share"></i>
-      <% end %>
-    </div>
-    <%# <div class="form-actions"> %>
-      <%# <%= link_to "Leave",  community_membership_path(current_user.id, @membership.id), class:"btn btn-danger mb-3 ", method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+<% if  @membership %>
+  <div class="container">
+    <%= simple_form_for [@community, @message], html: { class: "message--form p-5 mt-2 d-inline" },  remote: true do |f| %>
+      <div class="d-flex flex-row align-items-center justify-content-start">
+        <%= f.input :message, label: 'Insert your message', input_html: { class: "gray-border-rounded mr-4 p-2 adjust--with"}, wrapper_html: { class: "flex-grow-1"} ,
+        :label_html => { :class => 'fs-6 text-black' } %>
+        <%= button_tag type: 'submit', class: "btn btn-primary mx-2 p-2 mt-3" do %>
+          <i class="fas fa-share"></i>
+        <% end %>
+      </div>
+      <%# <div class="form-actions"> %>
+        <%# <%= link_to "Leave",  community_membership_path(current_user.id, @membership.id), class:"btn btn-danger mb-3 ", method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
 
-    <%# </div> %>
-  <% end %>
-</div>
+      <%# </div> %>
+    <% end %>
+  </div>
+<% else %>
+  <%= button_to "Join",  community_memberships_path(@community), method: :post , class:"btn btn-primary m-3"%>
+<% end %>
