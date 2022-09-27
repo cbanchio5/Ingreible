@@ -34,8 +34,7 @@ class ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = policy_scope(Review).reorder(created_at: :desc)
-    @reviews = Review.where(recipe_id: params[:recipe_id])
+    @reviews = policy_scope(Review).where(recipe_id: params[:recipe_id]).order(created_at: :desc)
     @review = Review.new
     @recipe = Recipe.find(params[:recipe_id])
     authorize @recipe
