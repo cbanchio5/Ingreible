@@ -93,7 +93,7 @@
 
 
 
-<%= render partial: "review_modal", locals: {  } %>
+  <%= render partial: "review_modal", locals: {  } %>
 
   <% @recipe.reviews.order(created_at: :desc).first(3).each do |review| %>
       <div class="comment mt-3">
