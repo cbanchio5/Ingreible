@@ -13,11 +13,13 @@
         </div>
         <% if community.memberships.one? { |member| member.user_id == current_user.id && member.community_id == community.id} %>
           <div class="community--card__footer">
-            <%= button_to 'Visit',  community_messages_path(community), method: :get, class:"btn btn-primary" %>
+            <%= button_to community_messages_path(community), method: :get, class:"btn btn-outline-primary" do%>
+              <i class="fas fa-plus"></i>
+            <% end %>
           </div>
         <% else %>
           <div class="community--card__footer">
-            <%= button_to    community_messages_path(community), method: :get , class:"btn btn-primary" do%>
+            <%= button_to  community_messages_path(community), method: :get , class:"btn btn-outline-primary" do%>
               <i class="fas fa-sign-in-alt"></i>
             <% end %>
           </div>
