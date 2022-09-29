@@ -282,7 +282,11 @@
       </div>
   <% end %>
   </div>
-  <%= link_to 'View more', recipe_reviews_path(@recipe), class:"mt-5 small text-primary1 text-decoration-none" %>
+  <% if @recipe.reviews.length === 0 %>
+    <p class="text-gray3">No reviews yet</p>
+  <% elsif  @recipe.reviews.length > 3 %>
+    <%= link_to 'View more', recipe_reviews_path(@recipe), class:"mt-5 small text-primary1 text-decoration-none" %>
+  <% end %>
 </div>
 
 
