@@ -11,21 +11,101 @@
     <%= @recipe.name%>
   </div>
   <div class="d-flex align-items-center justify-content-center gap-4 py-3">
+
     <!-- bookmark toggle -->
-    <div class="d-flex h-full global_bookmark  align-items-center gap-1">
-      <%= image_tag "icon/bookmark.svg", class: "icon" %>
-      <div class="small text-primary1">Save</div>
+    <div class="d-flex h-full global_bookmark align-items-center gap-1">
+      <% favourite = Favourite.find_by(user:current_user, recipe: @recipe)  %>
+      <%if favourite %>
+        <%= link_to user_favourite_path(current_user, favourite), class: "icon_button text-decoration-none align-items-center gap-1", remote: true, method: :delete do%>
+          <%= image_tag "icon/bookmark-active.svg", class: "icon" %>
+          <div class="small text-primary1">Saved</div>
+        <% end %>
+      <% else %>
+        <%= link_to recipe_favourites_path(@recipe), class: "icon_button text-decoration-none align-items-center gap-1", remote: true, method: :post do %>
+          <%= image_tag "icon/bookmark.svg", class: "icon" %>
+          <div class="small text-primary1">Save</div>
+        <% end %>
+      <% end %>
     </div>
     <!-- bookmark toggle end -->
 
 
 
     <!-- rate -->
-   <%= render partial: "review_modal", locals: {  } %>
+    <%# ###MODALS %>
+  <div class="modal--review  sign-in " data-controller="demo">
+    <%# ###REVIEW MODAL %>
+    <div class="modal" data-demo-target="modal" data-controller="modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="fw-semibold fs-1">Leave  review</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-action="click->modal#close" ></button>
+          </div>
+          <div class="modal-body p-5">
+            <div class="" data-controller="rating">
+              <%= simple_form_for [ @recipe, @review ] do |f| %>
+                <%= f.input :content, input_html: { class: "gray-border-rounded"} %>
+                <%= f.input :rating, as: :hidden,  input_html: { class: "gray-border-rounded", data: { 'rating-target': 'rating' }}, wrapper_html: { class: 'js-linked' } %>
+                <br>
+                <label class="mb-2">Rating</label>
+                <div class="rating d-flex align-item-center" >
+                  <label>
+                    <input type="radio" name="stars" value="1" data-action="click->rating#getValue1" data-rating-target="link1"/>
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="2" data-action="click->rating#getValue2" data-rating-target="link2"/>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="3" data-action="click->rating#getValue3" data-rating-target="link3"/>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="4" data-action="click->rating#getValue4" data-rating-target="link4"/>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="5" data-action="click->rating#getValue5" data-rating-target="link5"/>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                </div>
+                <hr>
+              <%= f.submit "Submit review", class: "btn btn-primary" %>
+            <% end %>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%# END OF REVIEW MODAL %>
+    <%# CTA BUTTONS %>
+    <%= button_to '#', class:"small text-primary1 border-0 bg-color-white d-flex h-full global_bookmark  align-items-center gap-1", :data => {  :action => 'demo#launchDemo' } do %>
+      <%= image_tag "icon/message.svg", class: "icon" %>
+          Leave a review
+        <% end %>
+    <%# link_to "Profile", profile_path(@profile.id, param1: 'value1', param2: 'value2'), method: :post %>
+  </div>
+<%# ### END MODALS %>
 
     <!-- rate end -->
   </div>
 </div>
+
+
+
+
 <div class="recipe-info d-flex justify-content-between w-full py-3 px-4 my-3 text-gray2 small bg-color-primary5">
   <div class="text-center">
     Difficulty <br><span class="bold text-gray1"> <%= @recipe.difficulty %></span>
@@ -50,7 +130,56 @@
   </ul>
 </div>
 
-  <%= render partial: "cooking_modal", locals: {  } %>
+
+<%# <div class="container-fluid mt-3"> %>
+  <%# <ul class="text-gray2 small ps-0"> %>
+    <%# <% @recipe.steps.split('--').each_with_index do |step, index| %>
+      <%# <h2 class="normal bold text-gray1">Step <%= index + 1 %>
+      <%# <li class="list-group-item pt-1"> <%= step %>
+    <%# <% end %>
+  <%# </ul> %>
+<%# </div> %>
+
+
+
+
+  <%# ###MODALS %>
+  <div class="modal--review container sign-in mt-4 mb-5" data-controller="demo">
+    <%# COOKING MODAL %>
+    <div class="modal--review container sign-in" data-controller="demo1">
+      <div class="modal" data-demo1-target="modal" data-controller="modal">
+        <div class="modal-dialog modal-fullscreen-lg-down">
+          <div class="modal-content">
+            <div class=" p-0 relative">
+              <div class="gradient--image-primary">
+              <%= cl_image_tag @recipe.photo.key, class: "img-cover img-180" %>
+              </div>
+              <div class="normal bold absolute text-white bottom-0 z-20 d-flex pb-3 ps-3"><%= @recipe.name%></div>
+              <button type="button" class="btn-close absolute top-0 end-0 z-20 d-flex  pt-4 pe-4" data-bs-dismiss="modal" aria-label="Close" data-action="click->modal#close" ></button>
+            </div>
+            <div class="div" data-controller="modalcooking">
+              <% index = 0 %>
+            <div class="modal-body" >
+              <h4 data-modalcooking-target="index" class="bold large text-gray1" >Step <%=index + 1 %> </h4>
+              <div class="step-container" data-modalcooking-target="content">
+                <% @recipe.steps.split('--').each do |step| %>
+                  <div class="step inactive--div">
+                  <p class="small text-gray1"><%=step  %></p>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button  data-action="click->modalcooking#previous" class="btn btn-primary text-white" data-modalcooking-target="previous" >Previous</button>
+              <button  data-action="click->modalcooking#next" class="btn btn-primary text-white" data-modalcooking-target="next">Next</button>
+              <%# <button data-action="click->modal#close" class="btn btn-secondary">Close</button> %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%# END OF COOKING MODAL %>
 
     <%# CTA BUTTONS %>
 
@@ -59,7 +188,10 @@
         <button type="button" class="btn btn-primary " data-action= 'demo1#launchDemo' >Start Cooking!</button>
       </div>
     </div>
+
+    <%# link_to "Profile", profile_path(@profile.id, param1: 'value1', param2: 'value2'), method: :post %>
   </div>
+<%# ### END MODALS %>
 </div>
 
 
@@ -75,7 +207,78 @@
     <!-- Reviews title end -->
     <!-- button modal -->
     <div class="d-flex">
-   <%= render partial: "review_modal", locals: {  } %>
+         <%# ###MODALS %>
+  <div class="modal--review container sign-in ps-0" data-controller="demo">
+    <%# ###REVIEW MODAL %>
+    <div class="modal" data-demo-target="modal" data-controller="modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="fw-semibold fs-1">Leave  review</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-action="click->modal#close" ></button>
+          </div>
+          <div class="modal-body p-5">
+            <div class="" data-controller="rating">
+              <%= simple_form_for [ @recipe, @review ] do |f| %>
+                <%= f.input :content, input_html: { class: "gray-border-rounded"} %>
+                <%= f.input :rating, as: :hidden,  input_html: { class: "gray-border-rounded", data: { 'rating-target': 'rating' }}, wrapper_html: { class: 'js-linked' } %>
+                <br>
+                <label class="mb-2">Rating</label>
+                <div class="rating d-flex align-item-center" >
+                  <label>
+                    <input type="radio" name="stars" value="1" data-action="click->rating#getValue1" data-rating-target="link1"/>
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="2" data-action="click->rating#getValue2" data-rating-target="link2"/>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="3" data-action="click->rating#getValue3" data-rating-target="link3"/>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="4" data-action="click->rating#getValue4" data-rating-target="link4"/>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="5" data-action="click->rating#getValue5" data-rating-target="link5"/>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                </div>
+                <hr>
+              <%= f.submit "Submit review", class: "btn btn-primary" %>
+            <% end %>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%# END OF REVIEW MODAL %>
+
+    <%# CTA BUTTONS %>
+
+    <%= button_to '#', class:"small text-primary1 border-0 bg-color-white", :data => {  :action => 'demo#launchDemo' } do %>
+      <%= image_tag "icon/message.svg", class: "icon" %>
+          Leave a review
+        <% end %>
+    <%# link_to "Profile", profile_path(@profile.id, param1: 'value1', param2: 'value2'), method: :post %>
+  </div>
+<%# ### END MODALS %>
+
+
+
 
     </div>
     <!-- button modal end -->
@@ -84,12 +287,7 @@
 
 
   <div class="pb-2">
- <% if @recipe.reviews.length === 0 %>
-    <p class= "text-gray3 letter--space">No reviews yet</p>
-
-<% else %>
-
-  <% @recipe.reviews.order(created_at: :desc).first(3).each do |review| %>
+  <% @recipe.reviews.sample(3).each do |review| %>
       <div class="comment mt-3">
         <div class="comment-heading gap-1">
           <% if review.user.photo.attached? %>
@@ -107,7 +305,7 @@
       <div class="comment-body text-gray1 ms-5">
         <p class="media-body pb-3 mb-0 small lh-125  d-flex">
             <%= review.content %>
-            <br>
+
             <%= ("⭐️" * review.rating )  %>
             <% if policy(review).destroy?%>
               <%= link_to  recipe_review_path(@recipe, review), class:"danger-text mx-2", method: :delete, remote: true do %>
@@ -117,12 +315,8 @@
         </p>
       </div>
   <% end %>
-  <% end %>
   </div>
-  <% if @recipe.reviews.length > 3 %>
-      <%= link_to 'View more', recipe_reviews_path(@recipe), class:"mt-5 small text-primary1 text-decoration-none" %>
-    <% end %>
-
+  <%= link_to 'View more', recipe_reviews_path(@recipe), class:"mt-5 small text-primary1 text-decoration-none" %>
 </div>
 
 
