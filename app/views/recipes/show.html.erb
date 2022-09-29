@@ -9,6 +9,7 @@
     <%= @recipe.name%>
   </div>
   <div class="d-flex align-items-center justify-content-center gap-4 py-3">
+
     <!-- bookmark toggle -->
     <div class="d-flex h-full global_bookmark align-items-center gap-1">
       <% favourite = Favourite.find_by(user:current_user, recipe: @recipe)  %>
@@ -141,7 +142,10 @@
 
 
 
+
   <%= render partial: "cooking_modal", locals: {  } %>
+
+
 
     <%# CTA BUTTONS %>
 

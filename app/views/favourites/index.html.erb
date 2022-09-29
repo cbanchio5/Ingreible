@@ -30,7 +30,7 @@
             <div class="card--favorite m-3" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('<%= cl_image_path favorite.recipe.photo.key, height: 300 %>')">
               <div class="title--card">
                 <div class="bookmark mx-3">
-                  <%= link_to user_favourite_path(current_user.id, favorite.id), method: :delete, remote: true do%>
+                  <%= link_to user_favourite_path(current_user.id, favorite.id), class: "icon_button", method: :delete, remote: true do%>
                     <%= image_tag "icon/bookmark-active.svg", class: "icon" %>
                   <% end %>
                 </div>
