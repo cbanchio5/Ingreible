@@ -133,7 +133,7 @@
                   <div class="d-flex h-full global_bookmark">
                     <% favourite = Favourite.find_by(user:current_user, recipe:recipe)  %>
                     <%if favourite %>
-                      <%= link_to user_favourite_path(current_user, favourite), remote: true, method: :delete do%>
+                      <%= link_to user_favourite_path(current_user, favourite), class: "icon_button", remote: true, method: :delete do%>
                         <%= image_tag "icon/bookmark-active.svg", class: "icon" %>
                       <% end %>
                     <% else %>
@@ -186,7 +186,7 @@
                   <div class="d-flex h-full global_bookmark">
                     <% favourite = Favourite.find_by(user:current_user, recipe:recipe)  %>
                     <%if favourite %>
-                      <%= link_to user_favourite_path(current_user, favourite), remote: true, method: :delete do%>
+                      <%= link_to user_favourite_path(current_user, favourite), class: "icon_button", remote: true, method: :delete do%>
                         <%= image_tag "icon/bookmark-active.svg", class: "icon" %>
                       <% end %>
                     <% else %>

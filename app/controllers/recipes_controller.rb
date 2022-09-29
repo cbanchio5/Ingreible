@@ -24,9 +24,11 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     # @booking = Booking.new
+
     authorize @recipe
     @review = Review.new
     authorize @review
+    @favourites = policy_scope(Favourite)
     # authorize @booking
   end
 
