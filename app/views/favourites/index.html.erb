@@ -13,7 +13,8 @@
                   <%= image_tag "icon/bookmark.svg", class: "icon" %>
                 <% end %>
               </div>
-              <div class="badge_rating d-flex text-black m-2">
+              <% rating = recipe.reviews.average(:rating).to_f.round(2) %>
+              <div class="badge_rating d-flex text-black m-2 <%= 'inactive--div' unless rating.positive? %>">
                 <%= image_tag "icon/rating-star.svg" %> <%= recipe.reviews.average(:rating).to_f.round(2)  %>
               </div>
             </div>

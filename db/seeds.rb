@@ -38,7 +38,7 @@ puts "Creating Recipes"
 
 # RECIPES CREATION
 
-recipes.slice!(800, 90).each do |recipe|
+recipes.slice!(800, 20).each do |recipe|
   new_recipe = Recipe.new(name: recipe["Name"],
     ingredients: recipe["Ingredients"].join("-- "),
     difficulty: ['easy', 'medium', 'hard'].sample,
