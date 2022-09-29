@@ -40,6 +40,17 @@ class ReviewsController < ApplicationController
     authorize @recipe
   end
 
+  def destroy
+    @review = Review.find(params[:id])
+    authorize @review
+    @review.destroy
+    if request.headers["referer"].include?("reviews")
+      redirect_to recipe_reviews_path(@review.recipe_id)
+    else
+      redirect_to recipe_path(@review.recipe_id)
+    end
+  end
+
   private
 
   def review_params
