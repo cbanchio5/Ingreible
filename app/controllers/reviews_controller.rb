@@ -40,6 +40,13 @@ class ReviewsController < ApplicationController
     authorize @recipe
   end
 
+  def destroy
+    @review = Review.find(params[:id])
+    authorize @review
+    @review.destroy
+    redirect_to recipes_path, notice: 'Recipe was successfully destroyed.'
+  end
+
   private
 
   def review_params
