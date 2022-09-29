@@ -38,7 +38,7 @@ puts "Creating Recipes"
 
 # RECIPES CREATION
 
-recipes.slice!(800, 80).each do |recipe|
+recipes.slice!(800, 90).each do |recipe|
   new_recipe = Recipe.new(name: recipe["Name"],
     ingredients: recipe["Ingredients"].join("-- "),
     difficulty: ['easy', 'medium', 'hard'].sample,
@@ -124,16 +124,22 @@ reviews = JSON.parse(serialized_data_reviews)
 reviews.each do |review|
   new_review = Review.new(content: review["review"], rating: (1..5).to_a.sample, user: User.where(admin: false).order("RANDOM()").first, recipe:Recipe.order("RANDOM()").first)
   new_review.save!
+  new_message = Message.new(message: review["review"], user: User.where(admin: false).order("RANDOM()").first, community: Community.order("RANDOM()").first)
+  new_message.save!
 end
 
 reviews.each do |review|
   new_review = Review.new(content: review["review"], rating: (1..5).to_a.sample, user: User.where(admin: false).order("RANDOM()").first, recipe:Recipe.order("RANDOM()").first)
   new_review.save!
+  new_message = Message.new(message: review["review"], user: User.where(admin: false).order("RANDOM()").first, community: Community.order("RANDOM()").first)
+  new_message.save!
 end
 
 reviews.each do |review|
   new_review = Review.new(content: review["review"], rating: (1..5).to_a.sample, user: User.where(admin: false).order("RANDOM()").first, recipe:Recipe.order("RANDOM()").first)
   new_review.save!
+  new_message = Message.new(message: review["review"], user: User.where(admin: false).order("RANDOM()").first, community: Community.order("RANDOM()").first)
+  new_message.save!
 end
 
 puts "finish with the reviews"
