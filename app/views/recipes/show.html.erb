@@ -5,13 +5,10 @@
 </div>
 
 <div class="container-fluid mt-3 text-center">
-
-
   <div class="header bold text-gray1  mt-3">
     <%= @recipe.name%>
   </div>
   <div class="d-flex align-items-center justify-content-center gap-4 py-3">
-
     <!-- bookmark toggle -->
     <div class="d-flex h-full global_bookmark align-items-center gap-1">
       <% favourite = Favourite.find_by(user:current_user, recipe: @recipe)  %>
@@ -27,6 +24,7 @@
         <% end %>
       <% end %>
     </div>
+
     <!-- bookmark toggle end -->
 
 
@@ -143,43 +141,7 @@
 
 
 
-  <%# ###MODALS %>
-  <div class="modal--review container sign-in mt-4 mb-5" data-controller="demo">
-    <%# COOKING MODAL %>
-    <div class="modal--review container sign-in" data-controller="demo1">
-      <div class="modal" data-demo1-target="modal" data-controller="modal">
-        <div class="modal-dialog modal-fullscreen-lg-down">
-          <div class="modal-content">
-            <div class=" p-0 relative">
-              <div class="gradient--image-primary">
-              <%= cl_image_tag @recipe.photo.key, class: "img-cover img-180" %>
-              </div>
-              <div class="normal bold absolute text-white bottom-0 z-20 d-flex pb-3 ps-3"><%= @recipe.name%></div>
-              <button type="button" class="btn-close absolute top-0 end-0 z-20 d-flex  pt-4 pe-4" data-bs-dismiss="modal" aria-label="Close" data-action="click->modal#close" ></button>
-            </div>
-            <div class="div" data-controller="modalcooking">
-              <% index = 0 %>
-            <div class="modal-body" >
-              <h4 data-modalcooking-target="index" class="bold large text-gray1" >Step <%=index + 1 %> </h4>
-              <div class="step-container" data-modalcooking-target="content">
-                <% @recipe.steps.split('--').each do |step| %>
-                  <div class="step inactive--div">
-                  <p class="small text-gray1"><%=step  %></p>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button  data-action="click->modalcooking#previous" class="btn btn-primary text-white" data-modalcooking-target="previous" >Previous</button>
-              <button  data-action="click->modalcooking#next" class="btn btn-primary text-white" data-modalcooking-target="next">Next</button>
-              <%# <button data-action="click->modal#close" class="btn btn-secondary">Close</button> %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <%# END OF COOKING MODAL %>
+  <%= render partial: "cooking_modal", locals: {  } %>
 
     <%# CTA BUTTONS %>
 
