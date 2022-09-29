@@ -44,7 +44,10 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     authorize @review
     @review.destroy
-    redirect_to recipes_path, notice: 'Recipe was successfully destroyed.'
+    if request.headers["referer"].include?("reviews")
+      redirect_to recipe_reviews_path(@review.recipe_id)
+    else
+    end
   end
 
   private
