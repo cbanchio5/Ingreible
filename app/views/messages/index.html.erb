@@ -17,7 +17,7 @@
 
 <%# ##MESAGE FORM %>
 
-<% if  @membership %>
+<% if  @membership || current_user.admin %>
   <div class="container">
     <%= simple_form_for [@community, @message], html: { class: "message--form p-5 mt-2 d-inline" },  remote: true do |f| %>
       <div class="d-flex flex-row align-items-center justify-content-start">
