@@ -47,6 +47,7 @@ class ReviewsController < ApplicationController
     if request.headers["referer"].include?("reviews")
       redirect_to recipe_reviews_path(@review.recipe_id)
     else
+      redirect_to recipe_path(@review.recipe_id)
     end
   end
 

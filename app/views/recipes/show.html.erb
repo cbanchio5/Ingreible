@@ -109,6 +109,11 @@
             <%= review.content %>
             <br>
             <%= ("⭐️" * review.rating )  %>
+            <% if policy(review).destroy?%>
+              <%= link_to  recipe_review_path(@recipe, review), class:"danger-text mx-2", method: :delete, remote: true do %>
+                <i class="fas fa-times"></i>
+              <% end %>
+            <% end %>
         </p>
       </div>
   <% end %>
