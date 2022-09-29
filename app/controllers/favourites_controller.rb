@@ -29,7 +29,9 @@ def create
   @favourite.user_id = current_user.id
   #relationship does not exist
   if  @favourite.save
-    if request.headers["referer"].include?("recipes")
+    if request.headers["referer"].include?("recipes/")
+      redirect_to recipe_path(@recipe)
+    elsif request.headers["referer"].include?("recipes")
       redirect_to recipes_path
     else
       redirect_to user_favourites_path(current_user)
@@ -47,7 +49,9 @@ def destroy
   authorize @favourite
   #raise
   @favourite.destroy
-  if request.headers["referer"].include?("recipes")
+  if request.headers["referer"].include?("recipes/")
+    redirect_to recipe_path(@favourite.recipe_id)
+  elsif request.headers["referer"].include?("recipes")
     redirect_to recipes_path
   else
     redirect_to user_favourites_path(current_user)
