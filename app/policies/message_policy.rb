@@ -23,7 +23,7 @@ class MessagePolicy < ApplicationPolicy
   end
 
   def create?
-    user.communities.include?(record.community)
+    true
   end
 
   def destroy?
