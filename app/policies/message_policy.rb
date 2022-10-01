@@ -6,11 +6,11 @@ class MessagePolicy < ApplicationPolicy
     # end
     def resolve
       ##This fixes the issue,
-      if scope.all.none? {|element| element.user_id == user.id}
-       raise Pundit::NotAuthorizedError, 'Not allowed to view this action'
-      else
+      # if scope.all.none? {|element| element.user_id == user.id}
+      #  raise Pundit::NotAuthorizedError, 'Not allowed to view this action'
+      # else
         scope.all
-      end
+    #   end
     end
   end
 
